@@ -16,6 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property(nonatomic, strong) NSArray *tweets;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @end
 
@@ -28,6 +29,11 @@
     self.tableView.delegate = self;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 60;
+
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(onRefresh:) forControlEvents: UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
+
 
     [self.tableView registerNib:[UINib nibWithNibName:@"TweetCell" bundle:nil] forCellReuseIdentifier:@"TweetCell"];
 
@@ -48,6 +54,25 @@
 - (IBAction)onLogout:(id)sender {
     [User logout];
 }
+
+#pragma mark Refresh Controller
+- (void) onRefresh:(UIRefreshControl *)refresh {
+    if (self.tweets.count > 0) {
+        Tweet *lasTweet = self.tweets[0];
+    [[TwitterClient sharedInstance] homeTimelineWithParams:@{@"since_id": lasTweet.tweetId } completion:^
+     (NSArray *tweets, NSError *error) {
+         self.tweets = [tweets arrayByAddingObjectsFromArray:self.tweets];
+
+         for (Tweet *tweet in tweets) {
+             NSLog(@"image: %@ text: %@ ", [tweet.user.profileImageUrl absoluteString], tweet.text);
+
+         }
+         [self.tableView reloadData];
+         [self.refreshControl endRefreshing];
+     }];
+    }
+}
+
 
 #pragma mark TableView DataSource methods
 

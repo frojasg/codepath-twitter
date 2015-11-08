@@ -32,6 +32,7 @@
 }
 
 -(void) setTweet:(Tweet*) tweet {
+    self.tweetImageView.image = nil;
     [self.tweetImageView setImageWithURL: tweet.user.profileImageUrl];
     self.tweetImageView.layer.cornerRadius = 5;
     self.tweetImageView.clipsToBounds = YES;

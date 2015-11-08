@@ -29,7 +29,7 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 60;
+    self.tableView.estimatedRowHeight = 100;
 
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(onRefresh:) forControlEvents: UIControlEventValueChanged];

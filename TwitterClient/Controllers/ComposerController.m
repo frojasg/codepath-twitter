@@ -10,6 +10,8 @@
 #import "UIImageView+AFNetworking.h"
 #import "ComposerController.h"
 #import "User.h"
+#import "Tweet.h"
+#import "TwitterClient.h"
 
 @interface ComposerController ()
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
@@ -56,13 +58,15 @@
     NSValue* keyboardFrameBegin = [keyboardInfo valueForKey:UIKeyboardFrameBeginUserInfoKey];
     CGRect keyboardFrameBeginRect = [keyboardFrameBegin CGRectValue];
 
-    NSLog(@"x: %f y: %f height %f", keyboardFrameBeginRect.origin.x, keyboardFrameBeginRect.origin.y, keyboardFrameBeginRect.size.height);
     self.bottomConstraint.constant = keyboardFrameBeginRect.size.height;
     [self.view layoutIfNeeded];
 }
 
 - (IBAction)onTweet:(id)sender {
     NSLog(@"on Tweet");
+    [[TwitterClient sharedInstance] tweetWithParams:@{@"status": self.inputTextField.text} completion:^(Tweet *tweet, NSError *error) {
+        [self onClose:self];
+    }];
 }
 - (IBAction)onClose:(id)sender {
     [self.view endEditing:YES];

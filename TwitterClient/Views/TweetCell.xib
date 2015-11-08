@@ -145,7 +145,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="likeImageView" destination="lrq-bX-cbB" id="znk-Or-0NV"/>
-                <outlet property="replayImageView" destination="akv-KS-BwX" id="MXC-sP-XUG"/>
+                <outlet property="replyImageView" destination="akv-KS-BwX" id="Fse-Mv-05C"/>
                 <outlet property="retweetImageView" destination="vG0-YK-M0f" id="lUm-UO-OUy"/>
                 <outlet property="screennameLabel" destination="2ID-xU-Cen" id="Ieq-X0-nRt"/>
                 <outlet property="sinceLabel" destination="ZqR-Df-coA" id="nbz-hB-b6U"/>

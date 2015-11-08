@@ -13,7 +13,7 @@
 #import "User.h"
 #import "Tweet.h"
 
-@interface TweetsViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface TweetsViewController () <UITableViewDataSource, UITableViewDelegate, TweetDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property(nonatomic, strong) NSArray *tweets;
@@ -70,6 +70,24 @@
     [self presentViewController:[[ComposerController alloc] init] animated:YES completion:nil];
 }
 
+#pragma mark Tweet Delegator
+- (void) reply: (TweetCell *) cell {
+}
+- (void) retweet: (TweetCell *) cell {
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    Tweet *tweet = self.tweets[indexPath.row];
+    [[TwitterClient sharedInstance] retweetWithId:tweet.tweetId completion:^(Tweet *tweet, NSError *error) {
+        NSLog(@"finally retweeted");
+    }];
+}
+- (void) like: (TweetCell *) cell {
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    Tweet *tweet = self.tweets[indexPath.row];
+    [[TwitterClient sharedInstance] likeWithId:tweet.tweetId completion:^(Tweet *tweet, NSError *error) {
+        NSLog(@"finally liked");
+    }];
+}
+
 #pragma mark Refresh Controller
 - (void) onRefresh:(UIRefreshControl *)refresh {
     if (self.tweets.count > 0) {
@@ -80,7 +98,6 @@
 
          for (Tweet *tweet in tweets) {
              NSLog(@"image: %@ text: %@ ", [tweet.user.profileImageUrl absoluteString], tweet.text);
-
          }
          [self.tableView reloadData];
          [self.refreshControl endRefreshing];
@@ -96,13 +113,11 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
     TweetCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
     [cell setTweet: self.tweets[indexPath.row]];
+    cell.delegator = self;
 
     return cell;
 }
-
-
 
 @end

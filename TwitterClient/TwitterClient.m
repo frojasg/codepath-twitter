@@ -88,4 +88,25 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
     }];
 }
 
+- (void) retweetWithId: (NSString*) tweetId completion: (void (^) (Tweet *tweet, NSError * error)) completation {
+    [self POST:[[NSString alloc] initWithFormat:@"1.1/statuses/retweet/%@.json", tweetId] parameters:@{} success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        NSLog(@"Re Tweeted!");
+        Tweet *tweet = [[Tweet alloc] initWithDictionary:responseObject];
+        completation(tweet, nil);
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        NSLog(@"Re Tweeted failed!");
+        completation(nil, error);
+    }];
+}
+
+- (void) likeWithId: (NSString*) tweetId completion: (void (^) (Tweet *tweet, NSError * error)) completation {
+    [self POST:@"1.1/favorites/create.json" parameters:@{@"id": tweetId} success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        NSLog(@"liked!");
+        Tweet *tweet = [[Tweet alloc] initWithDictionary:responseObject];
+        completation(tweet, nil);
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        completation(nil, error);
+    }];
+}
+
 @end

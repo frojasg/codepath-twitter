@@ -9,8 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "Tweet.h"
 
+@class TweetCell;
+
+@protocol TweetDelegate <NSObject>
+
+- (void) retweet: (TweetCell *) cell;
+- (void) like: (TweetCell *) cell;
+- (void) reply: (TweetCell *) cell;
+
+@end
+
+
 @interface TweetCell : UITableViewCell
 
+@property (weak, nonatomic) id<TweetDelegate> delegator;
 -(void) setTweet:(Tweet*) tweet;
 
 @end

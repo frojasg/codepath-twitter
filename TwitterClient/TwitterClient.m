@@ -7,6 +7,7 @@
 //
 
 #import "TwitterClient.h"
+#import "Tweet.h"
 
 NSString * const kTwitterConsumerKey = @"pwOlUNz9EkdFwIIrHdseNfQlb";
 NSString * const kTwitterConsumerSecret = @"0wEVEFumwQMruGWLdx9iK2yzL6rv6q6ma6cApo7WFwmCRn47wG";
@@ -55,6 +56,7 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
         [self GET:@"1.1/account/verify_credentials.json" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
             User *user = [[User alloc] initWithDictionary:responseObject];
+            [User setCurrentUser:user];
             NSLog(@"current user %@", user.name);
             self.loginCompletation(user, nil);
         } failure:^(AFHTTPRequestOperation *operation, NSError * error) {
@@ -63,6 +65,15 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
         }];
     } failure:^(NSError * error) {
         NSLog(@"Error");
+    }];
+}
+
+- (void) homeTimelineWithParams:(NSDictionary*) params completion:(void (^)(NSArray *tweets, NSError *error)) completation {
+    [self GET:@"1.1/statuses/home_timeline.json" parameters:params success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        NSArray *tweets = [Tweet tweetsWithArray:responseObject];
+        completation(tweets, nil);
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        completation(nil, error);
     }];
 }
 

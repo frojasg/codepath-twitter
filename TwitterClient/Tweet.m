@@ -30,4 +30,18 @@
     return tweets;
 }
 
+- (NSString *)since {
+    NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:self.createdAt];
+
+    if ( interval < 60 ) {
+        return [[NSString alloc] initWithFormat:@"%0.fs", interval];
+    } else if (interval < 60 * 60) {
+        return [[NSString alloc] initWithFormat:@"%0.fm", interval/60.0];
+    } else if ( interval < 60 * 60 * 24) {
+        return [[NSString alloc] initWithFormat:@"%0.fh", interval/(60.0 * 60.0)];
+    } else {
+        return [[NSString alloc] initWithFormat:@"%0.fd", interval/(60.0 * 60.0 * 24)];
+    }
+}
+
 @end

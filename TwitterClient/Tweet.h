@@ -19,4 +19,6 @@
 
 + (NSArray *) tweetsWithArray: (NSArray *) array;
 
+- (NSString *) since;
+
 @end

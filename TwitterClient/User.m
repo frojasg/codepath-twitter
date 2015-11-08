@@ -24,7 +24,7 @@ NSString * const UserDidLogoutNotification = @"UserDidLogoutNotification";
     if (self = [super init]) {
         self.name = dict[@"name"];
         self.screenname = dict[@"screen_name"];
-        self.profileImageUrl = dict[@"profile_image_url"];
+        self.profileImageUrl = [NSURL URLWithString: dict[@"profile_image_url"]];
         self.tagline = dict[@"description"];
         self.dictionary = dict;
     }
@@ -64,5 +64,12 @@ NSString * const kCurrentUserKey = @"kCurrentUserKey";
 
     [[NSNotificationCenter defaultCenter] postNotificationName:UserDidLogoutNotification object:nil];
 }
+
+- (NSString*) screenname {
+    return [NSString stringWithFormat:@"@%@", _screenname];
+}
+
+
+
 
 @end

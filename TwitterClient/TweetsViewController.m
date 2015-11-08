@@ -7,11 +7,15 @@
 //
 
 #import "TweetsViewController.h"
+#import "TweetCell.h"
 #import "TwitterClient.h"
 #import "User.h"
 #import "Tweet.h"
 
-@interface TweetsViewController ()
+@interface TweetsViewController () <UITableViewDataSource, UITableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property(nonatomic, strong) NSArray *tweets;
 
 @end
 
@@ -19,21 +23,46 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    [[TwitterClient sharedInstance] homeTimelineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
-        for (Tweet *tweet in tweets) {
-            NSLog(@"text: %@", tweet.text);
-        }
-    }];
+
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 60;
+
+    [self.tableView registerNib:[UINib nibWithNibName:@"TweetCell" bundle:nil] forCellReuseIdentifier:@"TweetCell"];
+
+    [[TwitterClient sharedInstance] homeTimelineWithParams:nil completion:^
+     (NSArray *tweets, NSError *error) {
+         self.tweets = tweets;
+         for (Tweet *tweet in tweets) {
+             NSLog(@"image: %@ text: %@ ", [tweet.user.profileImageUrl absoluteString], tweet.text);
+
+         }
+         [self.tableView reloadData];
+     }];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 - (IBAction)onLogout:(id)sender {
     [User logout];
 }
+
+#pragma mark TableView DataSource methods
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.tweets.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    TweetCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
+    [cell setTweet: self.tweets[indexPath.row]];
+
+    return cell;
+}
+
 
 
 @end

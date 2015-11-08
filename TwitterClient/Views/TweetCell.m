@@ -6,7 +6,9 @@
 //  Copyright © 2015 Francisco Rojas. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "TweetCell.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface TweetCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *tweetImageView;
@@ -30,6 +32,13 @@
 }
 
 -(void) setTweet:(Tweet*) tweet {
+    [self.tweetImageView setImageWithURL: tweet.user.profileImageUrl];
+    self.tweetImageView.layer.cornerRadius = 5;
+    self.tweetImageView.clipsToBounds = YES;
+    self.userNameLabel.text = tweet.user.name;
+    self.screennameLabel.text = tweet.user.screenname;
+    self.tweetLabel.text = tweet.text;
+    self.sinceLabel.text = tweet.since;
 }
 
 

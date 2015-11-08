@@ -72,7 +72,7 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		BF8940701BEDB7D5009D42FA /* Controller */ = {
+		BF8940701BEDB7D5009D42FA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				BF89406B1BEDB7CE009D42FA /* LoginViewController.h */,
@@ -82,7 +82,7 @@
 				BF89407D1BEDE53D009D42FA /* TweetsViewController.m */,
 				BF89407E1BEDE53D009D42FA /* TweetsViewController.xib */,
 			);
-			name = Controller;
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		BF8940741BEDB8CA009D42FA /* API */ = {
@@ -139,12 +139,11 @@
 				BF8940811BEE7879009D42FA /* Views */,
 				BF8940751BEDC80A009D42FA /* Models */,
 				BF8940741BEDB8CA009D42FA /* API */,
-				BF8940701BEDB7D5009D42FA /* Controller */,
+				BF8940701BEDB7D5009D42FA /* Controllers */,
 				BFE2B8281BEDB0E10087CAB3 /* AppDelegate.h */,
 				BFE2B8291BEDB0E10087CAB3 /* AppDelegate.m */,
 				BFE2B8311BEDB0E10087CAB3 /* Assets.xcassets */,
 				BFE2B8331BEDB0E10087CAB3 /* LaunchScreen.storyboard */,
-				BFE2B8361BEDB0E10087CAB3 /* Info.plist */,
 				BFE2B8251BEDB0E10087CAB3 /* Supporting Files */,
 			);
 			path = TwitterClient;
@@ -153,6 +152,7 @@
 		BFE2B8251BEDB0E10087CAB3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BFE2B8361BEDB0E10087CAB3 /* Info.plist */,
 				BFE2B8261BEDB0E10087CAB3 /* main.m */,
 			);
 			name = "Supporting Files";

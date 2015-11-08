@@ -15,11 +15,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="376" height="154.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PyC-78-kOS">
-                        <rect key="frame" x="5" y="5" width="80" height="80"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PyC-78-kOS">
+                        <rect key="frame" x="5" y="5" width="48" height="48"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="80" id="4t4-WD-XUo"/>
-                            <constraint firstAttribute="width" constant="80" id="UQj-bf-1UB"/>
+                            <constraint firstAttribute="height" constant="48" id="4t4-WD-XUo"/>
+                            <constraint firstAttribute="width" constant="48" id="UQj-bf-1UB"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="dgB-CA-1T5"/>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="nb2-MY-uOh"/>
                         </constraints>
@@ -31,31 +31,31 @@
                         </variation>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="744" text="Francisco Rojas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTY-wh-4x2">
-                        <rect key="frame" x="90" y="5" width="115" height="18"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                        <rect key="frame" x="63" y="5" width="108.5" height="17"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="240" verticalHuggingPriority="251" text="@frojasg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ID-xU-Cen">
-                        <rect key="frame" x="210" y="7" width="143" height="14.5"/>
+                        <rect key="frame" x="176.5" y="7" width="176.5" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.40000000000000002" green="0.45882352941176469" blue="0.49803921568627452" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="261" verticalHuggingPriority="251" horizontalCompressionResistancePriority="757" text="1h" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZqR-Df-coA">
-                        <rect key="frame" x="358" y="7" width="13" height="14.5"/>
+                        <rect key="frame" x="358" y="6" width="13" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.40000000000000002" green="0.45882352941176469" blue="0.49803921568627452" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="240" verticalCompressionResistancePriority="753" text="Have a nice day" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jt8-ns-0it">
-                        <rect key="frame" x="90" y="34" width="278" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <rect key="frame" x="63" y="27" width="305" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AJB-H6-TEz">
-                        <rect key="frame" x="90" y="62" width="281" height="20"/>
+                        <rect key="frame" x="63" y="52" width="308" height="20"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reply" translatesAutoresizingMaskIntoConstraints="NO" id="akv-KS-BwX">
                                 <rect key="frame" x="8" y="0.0" width="20" height="20"/>
@@ -65,14 +65,14 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="retweet" translatesAutoresizingMaskIntoConstraints="NO" id="vG0-YK-M0f">
-                                <rect key="frame" x="130.5" y="0.0" width="20" height="20"/>
+                                <rect key="frame" x="144" y="0.0" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="Jbz-np-a6s"/>
                                     <constraint firstAttribute="height" constant="20" id="dl8-rh-LU4"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="like" translatesAutoresizingMaskIntoConstraints="NO" id="lrq-bX-cbB">
-                                <rect key="frame" x="256" y="0.0" width="20" height="20"/>
+                                <rect key="frame" x="283" y="0.0" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="5b1-DL-CpF"/>
                                     <constraint firstAttribute="width" constant="20" id="ta2-zh-rkw"/>
@@ -102,20 +102,22 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="AJB-H6-TEz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="90" id="0BS-mC-Qx3"/>
+                    <constraint firstItem="Jt8-ns-0it" firstAttribute="leading" secondItem="nTY-wh-4x2" secondAttribute="leading" id="0fg-4U-pKo"/>
                     <constraint firstAttribute="trailing" secondItem="Jt8-ns-0it" secondAttribute="trailing" constant="8" id="3Du-UC-0x3"/>
                     <constraint firstAttribute="trailing" secondItem="ZqR-Df-coA" secondAttribute="trailing" constant="5" id="4x0-MR-dAT"/>
                     <constraint firstItem="nTY-wh-4x2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="9jS-Du-C3d"/>
                     <constraint firstItem="ZqR-Df-coA" firstAttribute="leading" secondItem="2ID-xU-Cen" secondAttribute="trailing" constant="5" id="FmK-qk-C7p"/>
                     <constraint firstItem="2ID-xU-Cen" firstAttribute="leading" secondItem="nTY-wh-4x2" secondAttribute="trailing" constant="5" id="MGI-9F-wpc"/>
+                    <constraint firstItem="AJB-H6-TEz" firstAttribute="leading" secondItem="nTY-wh-4x2" secondAttribute="leading" id="N9Q-70-1FT"/>
                     <constraint firstAttribute="trailing" secondItem="AJB-H6-TEz" secondAttribute="trailing" constant="5" id="NjL-Bf-nF2"/>
                     <constraint firstItem="AJB-H6-TEz" firstAttribute="top" secondItem="Jt8-ns-0it" secondAttribute="bottom" constant="10" id="O5I-XT-eDq"/>
                     <constraint firstItem="2ID-xU-Cen" firstAttribute="centerY" secondItem="nTY-wh-4x2" secondAttribute="centerY" id="R5w-KJ-BHC"/>
                     <constraint firstItem="nTY-wh-4x2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="ShO-5t-dk4"/>
-                    <constraint firstItem="Jt8-ns-0it" firstAttribute="leading" secondItem="PyC-78-kOS" secondAttribute="trailing" constant="5" id="Thz-Nd-di3"/>
+                    <constraint firstItem="Jt8-ns-0it" firstAttribute="leading" secondItem="PyC-78-kOS" secondAttribute="trailing" constant="10" id="Thz-Nd-di3"/>
                     <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="PyC-78-kOS" secondAttribute="bottom" constant="10" id="U92-5N-hzj"/>
                     <constraint firstItem="nTY-wh-4x2" firstAttribute="leading" secondItem="PyC-78-kOS" secondAttribute="trailing" constant="8" id="UCd-kD-Emf"/>
                     <constraint firstItem="PyC-78-kOS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="aNd-40-GyX"/>
-                    <constraint firstItem="nTY-wh-4x2" firstAttribute="leading" secondItem="PyC-78-kOS" secondAttribute="trailing" constant="5" id="azj-2d-MB3"/>
+                    <constraint firstItem="nTY-wh-4x2" firstAttribute="leading" secondItem="PyC-78-kOS" secondAttribute="trailing" constant="10" id="azj-2d-MB3"/>
                     <constraint firstItem="2ID-xU-Cen" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="bDW-IL-wIb"/>
                     <constraint firstItem="ZqR-Df-coA" firstAttribute="centerY" secondItem="nTY-wh-4x2" secondAttribute="centerY" id="cAd-tn-b2s"/>
                     <constraint firstItem="PyC-78-kOS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="gDz-YD-GE0"/>
@@ -124,7 +126,7 @@
                     <constraint firstAttribute="trailing" secondItem="nTY-wh-4x2" secondAttribute="trailing" constant="5" id="pE0-Ob-QAr"/>
                     <constraint firstItem="2ID-xU-Cen" firstAttribute="leading" secondItem="nTY-wh-4x2" secondAttribute="trailing" constant="5" id="xDU-mC-ana"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="AJB-H6-TEz" secondAttribute="bottom" constant="5" id="yPd-8E-zZY"/>
-                    <constraint firstItem="Jt8-ns-0it" firstAttribute="top" secondItem="nTY-wh-4x2" secondAttribute="bottom" constant="11" id="yxc-3r-Ibd"/>
+                    <constraint firstItem="Jt8-ns-0it" firstAttribute="top" secondItem="nTY-wh-4x2" secondAttribute="bottom" constant="5" id="yxc-3r-Ibd"/>
                     <constraint firstItem="PyC-78-kOS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="zos-4Y-Cht"/>
                 </constraints>
                 <variation key="default">
@@ -134,6 +136,7 @@
                         <exclude reference="ShO-5t-dk4"/>
                         <exclude reference="UCd-kD-Emf"/>
                         <exclude reference="pE0-Ob-QAr"/>
+                        <exclude reference="0BS-mC-Qx3"/>
                         <exclude reference="bDW-IL-wIb"/>
                         <exclude reference="hY5-aP-qnd"/>
                     </mask>

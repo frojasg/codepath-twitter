@@ -42,6 +42,4 @@
     self.sinceLabel.text = tweet.since;
 }
 
-
-
 @end

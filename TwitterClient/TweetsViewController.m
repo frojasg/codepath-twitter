@@ -7,6 +7,7 @@
 //
 
 #import "TweetsViewController.h"
+#import "ComposerController.h"
 #import "TweetCell.h"
 #import "TwitterClient.h"
 #import "User.h"
@@ -34,6 +35,14 @@
     [self.refreshControl addTarget:self action:@selector(onRefresh:) forControlEvents: UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
 
+    UIImageView *twitter =[[UIImageView alloc] initWithFrame:CGRectMake(0,0,30,30)];
+    twitter.image=[UIImage imageNamed:@"twitter"];
+    self.navigationItem.titleView = twitter;
+
+    UIBarButtonItem *tweetButton = [[UIBarButtonItem alloc] initWithTitle:@"Tweet" style:UIBarButtonItemStylePlain target:self action:@selector(showComposer)];
+
+    self.navigationItem.rightBarButtonItem = tweetButton;
+
 
     [self.tableView registerNib:[UINib nibWithNibName:@"TweetCell" bundle:nil] forCellReuseIdentifier:@"TweetCell"];
 
@@ -53,6 +62,12 @@
 }
 - (IBAction)onLogout:(id)sender {
     [User logout];
+}
+#pragma mark Actions
+
+- (void) showComposer {
+    NSLog(@"Tweet");
+    [self presentViewController:[[ComposerController alloc] init] animated:YES completion:nil];
 }
 
 #pragma mark Refresh Controller

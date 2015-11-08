@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ComposerController">
+            <connections>
+                <outlet property="actionView" destination="Kk1-Ue-r9Z" id="Dpx-vK-77P"/>
+                <outlet property="bottomConstraint" destination="Ehb-YN-GK2" id="M93-1y-Blq"/>
+                <outlet property="closeImageView" destination="HFn-sm-Q77" id="m76-sc-FCp"/>
+                <outlet property="inputTextField" destination="BC0-l8-zB0" id="fD5-9A-RID"/>
+                <outlet property="profileImageView" destination="aue-YD-gJB" id="Em2-bf-27w"/>
+                <outlet property="tweetButton" destination="CM2-cZ-03F" id="4nl-4o-nTW"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aue-YD-gJB">
+                    <rect key="frame" x="20" y="38" width="48" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="Ar8-mu-kY0"/>
+                        <constraint firstAttribute="width" constant="48" id="KhB-cV-3Ye"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="close" translatesAutoresizingMaskIntoConstraints="NO" id="HFn-sm-Q77">
+                    <rect key="frame" x="285" y="30" width="15" height="15"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="15" id="NPD-ch-uXe"/>
+                        <constraint firstAttribute="height" constant="15" id="uaX-ij-ola"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="KxE-Op-3vD" appends="YES" id="dXD-3H-NiF"/>
+                    </connections>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kk1-Ue-r9Z">
+                    <rect key="frame" x="0.0" y="260" width="320" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CM2-cZ-03F">
+                            <rect key="frame" x="240" y="11" width="50" height="28"/>
+                            <color key="backgroundColor" red="0.33333333333333331" green="0.67450980392156867" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="mcE-Tc-uo3"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" title="Tweet">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="onTweet:" destination="-1" eventType="touchUpInside" id="ep7-OL-9L0"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c1G-G0-RXg">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                            <color key="backgroundColor" red="0.80000000000000004" green="0.83921568627450982" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="NZL-0s-yZ4"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="CM2-cZ-03F" firstAttribute="centerY" secondItem="Kk1-Ue-r9Z" secondAttribute="centerY" id="3tB-fU-6gq"/>
+                        <constraint firstItem="c1G-G0-RXg" firstAttribute="leading" secondItem="Kk1-Ue-r9Z" secondAttribute="leading" id="Ao9-ui-NeE"/>
+                        <constraint firstAttribute="height" constant="50" id="TfB-zc-kLd"/>
+                        <constraint firstItem="c1G-G0-RXg" firstAttribute="top" secondItem="Kk1-Ue-r9Z" secondAttribute="top" id="Zat-P9-EDs"/>
+                        <constraint firstAttribute="trailing" secondItem="CM2-cZ-03F" secondAttribute="trailing" constant="30" id="dgY-iG-diw"/>
+                        <constraint firstAttribute="trailing" secondItem="c1G-G0-RXg" secondAttribute="trailing" id="iXC-Xc-Xph"/>
+                    </constraints>
+                </view>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BC0-l8-zB0">
+                    <rect key="frame" x="20" y="96" width="280" height="154"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Kk1-Ue-r9Z" secondAttribute="bottom" constant="258" id="Ehb-YN-GK2"/>
+                <constraint firstItem="BC0-l8-zB0" firstAttribute="top" secondItem="aue-YD-gJB" secondAttribute="bottom" constant="10" id="NKx-Sb-kMH"/>
+                <constraint firstAttribute="trailing" secondItem="Kk1-Ue-r9Z" secondAttribute="trailing" id="Vod-5W-yhG"/>
+                <constraint firstItem="HFn-sm-Q77" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="cJL-zt-S9b"/>
+                <constraint firstAttribute="trailing" secondItem="BC0-l8-zB0" secondAttribute="trailing" constant="20" id="fGj-IY-1Yr"/>
+                <constraint firstItem="Kk1-Ue-r9Z" firstAttribute="top" secondItem="BC0-l8-zB0" secondAttribute="bottom" constant="10" id="h6R-SI-Hrk"/>
+                <constraint firstItem="Kk1-Ue-r9Z" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="oWG-Zg-aIG"/>
+                <constraint firstItem="BC0-l8-zB0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="qas-W9-hdI"/>
+                <constraint firstItem="aue-YD-gJB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="topMargin" constant="30" id="w6Q-5y-w0z"/>
+                <constraint firstAttribute="trailing" secondItem="HFn-sm-Q77" secondAttribute="trailing" constant="20" id="xyO-qF-5gF"/>
+                <constraint firstItem="aue-YD-gJB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="z81-gH-cWK"/>
+            </constraints>
+            <point key="canvasLocation" x="340" y="223"/>
+        </view>
+        <tapGestureRecognizer id="KxE-Op-3vD">
+            <connections>
+                <action selector="onClose:" destination="-1" id="btq-3m-8Mv"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="close" width="32" height="32"/>
+    </resources>
+</document>

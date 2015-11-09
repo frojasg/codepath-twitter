@@ -71,6 +71,13 @@
 
 #pragma mark Tweet Delegator
 - (void) reply: (TweetCell *) cell {
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    Tweet *tweet = self.tweets[indexPath.row];
+    ComposerController *vc = [[ComposerController alloc] initWithTweet:tweet];
+//    [vc setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+
+    [self presentViewController:vc animated:YES completion:nil];
+
 }
 - (void) retweet: (TweetCell *) cell {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];

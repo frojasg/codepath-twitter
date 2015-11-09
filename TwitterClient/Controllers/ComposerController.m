@@ -20,10 +20,18 @@
 @property (weak, nonatomic) IBOutlet UIButton *tweetButton;
 @property (weak, nonatomic) IBOutlet UIView *actionView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
-
+@property (weak, nonatomic) Tweet *tweet;
 @end
 
 @implementation ComposerController
+
+- (id) initWithTweet: (Tweet*) tweet {
+    self = [super init];
+    if (self) {
+        self.tweet = tweet;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,6 +46,10 @@
     self.profileImageView.clipsToBounds = YES;
 
     self.inputTextField.placeholder = @"What's happening?";
+
+    if (self.tweet) {
+        self.inputTextField.text =[[NSString alloc] initWithFormat:@"%@ ", self.tweet.user.screenname];
+    }
 
     self.tweetButton.layer.cornerRadius = 5;
 
@@ -64,9 +76,15 @@
 
 - (IBAction)onTweet:(id)sender {
     NSLog(@"on Tweet");
-    [[TwitterClient sharedInstance] tweetWithParams:@{@"status": self.inputTextField.text} completion:^(Tweet *tweet, NSError *error) {
-        [self onClose:self];
-    }];
+    if (self.tweet) {
+        [[TwitterClient sharedInstance] tweetWithParams:@{@"status": self.inputTextField.text} completion:^(Tweet *tweet, NSError *error) {
+            [self onClose:self];
+        }];
+    } else {
+        [[TwitterClient sharedInstance] tweetWithParams:@{@"status": self.inputTextField.text, @"in_reply_to_status_id": self.tweet.tweetId} completion:^(Tweet *tweet, NSError *error) {
+            [self onClose:self];
+        }];
+    }
 }
 - (IBAction)onClose:(id)sender {
     [self.view endEditing:YES];

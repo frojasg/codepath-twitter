@@ -49,7 +49,6 @@
 
 #pragma mark Actions
 - (IBAction)onReply:(id)sender {
-    NSLog(@"on reply!");
     Tweet* tweet = [[Tweet alloc] init];
     tweet.text = self.replyTextField.text;
     tweet.responseTo = self.tweet;

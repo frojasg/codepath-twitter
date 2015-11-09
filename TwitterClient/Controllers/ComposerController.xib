@@ -12,6 +12,7 @@
                 <outlet property="bottomConstraint" destination="Ehb-YN-GK2" id="M93-1y-Blq"/>
                 <outlet property="closeImageView" destination="HFn-sm-Q77" id="m76-sc-FCp"/>
                 <outlet property="inputTextField" destination="BC0-l8-zB0" id="fD5-9A-RID"/>
+                <outlet property="limitLabel" destination="dib-Wp-wDp" id="p0Z-Tk-3aR"/>
                 <outlet property="profileImageView" destination="aue-YD-gJB" id="Em2-bf-27w"/>
                 <outlet property="tweetButton" destination="CM2-cZ-03F" id="4nl-4o-nTW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -64,21 +65,34 @@
                                 <constraint firstAttribute="height" constant="1" id="NZL-0s-yZ4"/>
                             </constraints>
                         </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="140" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dib-Wp-wDp">
+                            <rect key="frame" x="212.5" y="16.5" width="22.5" height="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" red="0.40000000000000002" green="0.45882352939999999" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="CM2-cZ-03F" firstAttribute="centerY" secondItem="Kk1-Ue-r9Z" secondAttribute="centerY" id="3tB-fU-6gq"/>
                         <constraint firstItem="c1G-G0-RXg" firstAttribute="leading" secondItem="Kk1-Ue-r9Z" secondAttribute="leading" id="Ao9-ui-NeE"/>
                         <constraint firstAttribute="height" constant="50" id="TfB-zc-kLd"/>
+                        <constraint firstItem="dib-Wp-wDp" firstAttribute="centerY" secondItem="Kk1-Ue-r9Z" secondAttribute="centerY" id="U6h-an-wuB"/>
                         <constraint firstItem="c1G-G0-RXg" firstAttribute="top" secondItem="Kk1-Ue-r9Z" secondAttribute="top" id="Zat-P9-EDs"/>
                         <constraint firstAttribute="trailing" secondItem="CM2-cZ-03F" secondAttribute="trailing" constant="30" id="dgY-iG-diw"/>
                         <constraint firstAttribute="trailing" secondItem="c1G-G0-RXg" secondAttribute="trailing" id="iXC-Xc-Xph"/>
+                        <constraint firstItem="CM2-cZ-03F" firstAttribute="leading" secondItem="dib-Wp-wDp" secondAttribute="trailing" constant="5" id="mXH-jT-SDJ"/>
+                        <constraint firstItem="CM2-cZ-03F" firstAttribute="centerY" secondItem="Kk1-Ue-r9Z" secondAttribute="centerY" id="tLg-90-wGp"/>
                     </constraints>
                 </view>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BC0-l8-zB0">
                     <rect key="frame" x="20" y="96" width="280" height="154"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <action selector="onChange:" destination="-1" eventType="valueChanged" id="2Xn-nP-zd6"/>
+                        <action selector="onChange:" destination="-1" eventType="editingChanged" id="aSH-hr-jPQ"/>
+                    </connections>
                 </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

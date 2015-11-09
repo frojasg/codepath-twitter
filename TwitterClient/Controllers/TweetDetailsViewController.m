@@ -17,6 +17,7 @@
 @property(nonatomic, strong) NSArray *tweets;
 @property (weak, nonatomic) IBOutlet UITextField *replyTextField;
 @property (readonly) Tweet* tweet;
+@property (weak, nonatomic) IBOutlet UILabel *limitLabel;
 
 @end
 
@@ -37,6 +38,7 @@
     self.tableView.estimatedRowHeight = 100;
     [self.tableView registerNib:[UINib nibWithNibName:@"TweetCell" bundle:nil] forCellReuseIdentifier:@"TweetCell"];
     self.replyTextField.text = [[NSString alloc] initWithFormat:@"%@ ", self.tweet.user.screenname];
+    [self onChange:self];
 }
 
 - (Tweet*) tweet {
@@ -59,6 +61,17 @@
 
     self.tweets = [self.tweets arrayByAddingObjectsFromArray:@[tweet]];
     [self.tableView reloadData];
+}
+- (IBAction)onChange:(id)sender {
+    self.limitLabel.text = [[NSString alloc] initWithFormat:@"%ld", 140 - self.replyTextField.text.length];
+    if (self.replyTextField.text.length < 130) {
+        self.limitLabel.textColor = [UIColor colorWithRed:204/255.0f green:214/255.0f blue:221/255.0f alpha:1];
+    } else if(self.replyTextField.text.length < 140) {
+        self.limitLabel.textColor = [UIColor colorWithRed:255/255.0f green:204/255.0f blue:0/255.0f alpha:1];
+    } else {
+        self.limitLabel.textColor = [UIColor colorWithRed:255/255.0f green:0/255.0f blue:0/255.0f alpha:1];
+    }
+
 }
 
 #pragma mark TableView DataSource methods

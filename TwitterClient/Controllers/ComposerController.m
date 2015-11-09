@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UITextField *inputTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *closeImageView;
+@property (weak, nonatomic) IBOutlet UILabel *limitLabel;
 @property (weak, nonatomic) IBOutlet UIButton *tweetButton;
 @property (weak, nonatomic) IBOutlet UIView *actionView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
@@ -72,6 +73,16 @@
 
     self.bottomConstraint.constant = keyboardFrameBeginRect.size.height;
     [self.view layoutIfNeeded];
+}
+- (IBAction)onChange:(id)sender {
+    self.limitLabel.text = [[NSString alloc] initWithFormat:@"%ld", 140 - self.inputTextField.text.length];
+    if (self.inputTextField.text.length < 130) {
+        self.limitLabel.textColor = [UIColor colorWithRed:204/255.0f green:214/255.0f blue:221/255.0f alpha:1];
+    } else if(self.inputTextField.text.length < 140) {
+        self.limitLabel.textColor = [UIColor colorWithRed:255/255.0f green:204/255.0f blue:0/255.0f alpha:1];
+    } else {
+        self.limitLabel.textColor = [UIColor colorWithRed:255/255.0f green:0/255.0f blue:0/255.0f alpha:1];
+    }
 }
 
 - (IBAction)onTweet:(id)sender {

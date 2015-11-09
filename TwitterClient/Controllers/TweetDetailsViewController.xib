@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TweetDetailsViewController">
             <connections>
+                <outlet property="limitLabel" destination="uWY-tR-ELQ" id="CJk-pn-vdZ"/>
                 <outlet property="replyTextField" destination="ThB-8b-p5K" id="daI-nJ-eor"/>
                 <outlet property="tableView" destination="Z3O-ji-q6q" id="4mj-Pb-kyN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -28,10 +29,13 @@
                     <rect key="frame" x="0.0" y="200" width="320" height="100"/>
                     <subviews>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ThB-8b-p5K">
-                            <rect key="frame" x="10" y="11" width="256" height="30"/>
+                            <rect key="frame" x="10" y="11" width="228.5" height="30"/>
                             <color key="backgroundColor" red="0.88235294117647056" green="0.90980392156862744" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <action selector="onChange:" destination="-1" eventType="editingChanged" id="avO-xE-szV"/>
+                            </connections>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ag7-UU-DJz">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
@@ -47,15 +51,24 @@
                                 <action selector="onReply:" destination="-1" eventType="touchUpInside" id="hfP-rE-Cpk"/>
                             </connections>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="140" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uWY-tR-ELQ">
+                            <rect key="frame" x="243" y="18" width="22.5" height="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" red="0.40000000000000002" green="0.45882352939999999" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <constraints>
                         <constraint firstItem="OrS-iY-2aD" firstAttribute="bottom" secondItem="ThB-8b-p5K" secondAttribute="bottom" id="4zc-aL-V2E"/>
+                        <constraint firstItem="OrS-iY-2aD" firstAttribute="centerY" secondItem="uWY-tR-ELQ" secondAttribute="centerY" id="Exh-pL-vwX"/>
                         <constraint firstItem="ThB-8b-p5K" firstAttribute="top" secondItem="Ag7-UU-DJz" secondAttribute="bottom" constant="10" id="FY5-bT-ZgO"/>
                         <constraint firstAttribute="trailing" secondItem="OrS-iY-2aD" secondAttribute="trailing" constant="10" id="PbU-AN-7rw"/>
-                        <constraint firstItem="OrS-iY-2aD" firstAttribute="leading" secondItem="ThB-8b-p5K" secondAttribute="trailing" constant="5" id="TQA-k5-j3n"/>
                         <constraint firstItem="Ag7-UU-DJz" firstAttribute="top" secondItem="CQC-Yn-lsC" secondAttribute="top" id="VNO-pZ-f3Z"/>
+                        <constraint firstItem="uWY-tR-ELQ" firstAttribute="leading" secondItem="ThB-8b-p5K" secondAttribute="trailing" constant="5" id="dC2-kR-oQe"/>
+                        <constraint firstItem="OrS-iY-2aD" firstAttribute="leading" secondItem="uWY-tR-ELQ" secondAttribute="trailing" constant="5" id="keT-lH-9fw"/>
                         <constraint firstAttribute="trailing" secondItem="Ag7-UU-DJz" secondAttribute="trailing" id="pFA-Mx-BOU"/>
                         <constraint firstItem="OrS-iY-2aD" firstAttribute="top" secondItem="Ag7-UU-DJz" secondAttribute="bottom" constant="10" id="q1P-Ln-k6I"/>
+                        <constraint firstItem="OrS-iY-2aD" firstAttribute="bottom" secondItem="ThB-8b-p5K" secondAttribute="bottom" id="sfe-x9-acX"/>
                         <constraint firstItem="ThB-8b-p5K" firstAttribute="leading" secondItem="CQC-Yn-lsC" secondAttribute="leading" constant="10" id="yRk-lX-FGc"/>
                         <constraint firstItem="Ag7-UU-DJz" firstAttribute="leading" secondItem="CQC-Yn-lsC" secondAttribute="leading" id="zqp-SD-KTD"/>
                     </constraints>

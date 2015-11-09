@@ -11,7 +11,7 @@
 
 @class TweetCell;
 
-@protocol TweetDelegate <NSObject>
+@protocol TweetCellDelegate <NSObject>
 
 - (void) retweet: (TweetCell *) cell;
 - (void) like: (TweetCell *) cell;
@@ -22,7 +22,7 @@
 
 @interface TweetCell : UITableViewCell
 
-@property (weak, nonatomic) id<TweetDelegate> delegator;
+@property (weak, nonatomic) id<TweetCellDelegate> delegator;
 -(void) setTweet:(Tweet*) tweet;
 
 @end

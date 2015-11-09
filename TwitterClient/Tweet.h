@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSString *text;
 @property (nonatomic, strong) NSDate *createdAt;
 @property (nonatomic, strong) User *user;
+@property (nonatomic, strong) Tweet* responseTo;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 

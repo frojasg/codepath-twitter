@@ -8,12 +8,13 @@
 
 #import "TweetsViewController.h"
 #import "ComposerController.h"
+#import "TweetDetailsViewController.h"
 #import "TweetCell.h"
 #import "TwitterClient.h"
 #import "User.h"
 #import "Tweet.h"
 
-@interface TweetsViewController () <UITableViewDataSource, UITableViewDelegate, TweetDelegate>
+@interface TweetsViewController () <UITableViewDataSource, UITableViewDelegate, TweetDelegate, TweetCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property(nonatomic, strong) NSArray *tweets;
@@ -30,6 +31,7 @@
     self.tableView.delegate = self;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 100;
+    [self.tableView registerNib:[UINib nibWithNibName:@"TweetCell" bundle:nil] forCellReuseIdentifier:@"TweetCell"];
 
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(onRefresh:) forControlEvents: UIControlEventValueChanged];
@@ -42,9 +44,6 @@
     UIBarButtonItem *tweetButton = [[UIBarButtonItem alloc] initWithTitle:@"Tweet" style:UIBarButtonItemStylePlain target:self action:@selector(showComposer)];
 
     self.navigationItem.rightBarButtonItem = tweetButton;
-
-
-    [self.tableView registerNib:[UINib nibWithNibName:@"TweetCell" bundle:nil] forCellReuseIdentifier:@"TweetCell"];
 
     [[TwitterClient sharedInstance] homeTimelineWithParams:nil completion:^
      (NSArray *tweets, NSError *error) {
@@ -76,16 +75,12 @@
 - (void) retweet: (TweetCell *) cell {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     Tweet *tweet = self.tweets[indexPath.row];
-    [[TwitterClient sharedInstance] retweetWithId:tweet.tweetId completion:^(Tweet *tweet, NSError *error) {
-        NSLog(@"finally retweeted");
-    }];
+    [self retweetTweet:tweet];
 }
 - (void) like: (TweetCell *) cell {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     Tweet *tweet = self.tweets[indexPath.row];
-    [[TwitterClient sharedInstance] likeWithId:tweet.tweetId completion:^(Tweet *tweet, NSError *error) {
-        NSLog(@"finally liked");
-    }];
+    [self likeTweet:tweet];
 }
 
 #pragma mark Refresh Controller
@@ -105,6 +100,33 @@
     }
 }
 
+#pragma mark TweetDelegate
+- (void) retweetTweet:(Tweet *)tweet {
+    [[TwitterClient sharedInstance] retweetWithId:tweet.tweetId completion:^(Tweet *tweet, NSError *error) {
+    }];
+}
+- (void) likeTweet: (Tweet *) tweet {
+    [[TwitterClient sharedInstance] likeWithId:tweet.tweetId completion:^(Tweet *tweet, NSError *error) {
+    }];
+}
+- (void) replyTweet: (Tweet *) tweet {
+    NSLog(@"status: %@, replyTo: %@", tweet.text, tweet.responseTo.tweetId);
+    [[TwitterClient sharedInstance] tweetWithParams:@{@"status": tweet.text, @"in_reply_to_status_id": tweet.responseTo.tweetId} completion:^(Tweet *tweet, NSError *error) {
+    }];
+}
+
+
+#pragma mark TableView
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    Tweet *tweet = self.tweets[indexPath.row];
+
+    TweetDetailsViewController *vc = [[TweetDetailsViewController alloc] initWithTweet:tweet];
+    vc.delegator = self;
+    [self.navigationController pushViewController:vc animated:YES];
+
+}
 
 #pragma mark TableView DataSource methods
 

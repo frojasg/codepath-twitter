@@ -72,8 +72,20 @@
                                     <constraint firstAttribute="height" constant="20" id="dl8-rh-LU4"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GUJ-UU-KKI">
+                                <rect key="frame" x="166" y="3" width="7.5" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.40000000000000002" green="0.45882352939999999" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d79-aN-eLP">
+                                <rect key="frame" x="290.5" y="2" width="7.5" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.40000000000000002" green="0.45882352939999999" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="like" translatesAutoresizingMaskIntoConstraints="NO" id="lrq-bX-cbB">
-                                <rect key="frame" x="278" y="0.0" width="20" height="20"/>
+                                <rect key="frame" x="265" y="0.0" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="5b1-DL-CpF"/>
                                     <constraint firstAttribute="width" constant="20" id="ta2-zh-rkw"/>
@@ -84,19 +96,27 @@
                         <constraints>
                             <constraint firstItem="vG0-YK-M0f" firstAttribute="centerX" secondItem="AJB-H6-TEz" secondAttribute="centerX" id="2g1-tp-KAZ"/>
                             <constraint firstItem="lrq-bX-cbB" firstAttribute="centerY" secondItem="akv-KS-BwX" secondAttribute="centerY" id="98S-kq-M7p"/>
+                            <constraint firstItem="lrq-bX-cbB" firstAttribute="centerY" secondItem="AJB-H6-TEz" secondAttribute="centerY" id="AGZ-8P-vZS"/>
+                            <constraint firstItem="d79-aN-eLP" firstAttribute="leading" secondItem="lrq-bX-cbB" secondAttribute="trailing" constant="5" id="Btz-Kj-FkU"/>
                             <constraint firstItem="vG0-YK-M0f" firstAttribute="centerY" secondItem="akv-KS-BwX" secondAttribute="centerY" id="C8K-pm-sWI"/>
                             <constraint firstItem="lrq-bX-cbB" firstAttribute="leading" secondItem="vG0-YK-M0f" secondAttribute="trailing" constant="88" id="EnL-aC-wzm"/>
                             <constraint firstAttribute="trailing" secondItem="lrq-bX-cbB" secondAttribute="trailing" constant="5" id="Gtk-10-bnM"/>
+                            <constraint firstAttribute="trailing" secondItem="d79-aN-eLP" secondAttribute="trailing" constant="5" id="L3I-2o-lop"/>
+                            <constraint firstItem="d79-aN-eLP" firstAttribute="centerY" secondItem="AJB-H6-TEz" secondAttribute="centerY" id="OME-WF-xoh"/>
                             <constraint firstItem="akv-KS-BwX" firstAttribute="top" secondItem="AJB-H6-TEz" secondAttribute="top" id="OMS-4A-lSr"/>
                             <constraint firstAttribute="height" constant="20" id="UDw-5K-p5q"/>
                             <constraint firstItem="akv-KS-BwX" firstAttribute="leading" secondItem="AJB-H6-TEz" secondAttribute="leading" constant="8" id="XCV-i4-QEd"/>
                             <constraint firstItem="lrq-bX-cbB" firstAttribute="top" secondItem="AJB-H6-TEz" secondAttribute="top" id="a2E-3T-DpE"/>
+                            <constraint firstItem="GUJ-UU-KKI" firstAttribute="centerY" secondItem="AJB-H6-TEz" secondAttribute="centerY" id="dha-Qr-klj"/>
+                            <constraint firstItem="vG0-YK-M0f" firstAttribute="centerY" secondItem="AJB-H6-TEz" secondAttribute="centerY" id="rdh-Yz-xe1"/>
                             <constraint firstItem="vG0-YK-M0f" firstAttribute="leading" secondItem="akv-KS-BwX" secondAttribute="trailing" constant="5" id="vPR-Pz-vAf"/>
+                            <constraint firstItem="GUJ-UU-KKI" firstAttribute="leading" secondItem="vG0-YK-M0f" secondAttribute="trailing" constant="5" id="wN1-1l-bJs"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="vPR-Pz-vAf"/>
                                 <exclude reference="EnL-aC-wzm"/>
+                                <exclude reference="Gtk-10-bnM"/>
                             </mask>
                         </variation>
                     </view>
@@ -144,8 +164,10 @@
                 </variation>
             </tableViewCellContentView>
             <connections>
+                <outlet property="likeCountLabel" destination="d79-aN-eLP" id="kfU-VW-0hY"/>
                 <outlet property="likeImageView" destination="lrq-bX-cbB" id="znk-Or-0NV"/>
                 <outlet property="replyImageView" destination="akv-KS-BwX" id="Fse-Mv-05C"/>
+                <outlet property="retweetCountLabel" destination="GUJ-UU-KKI" id="ySE-ac-awa"/>
                 <outlet property="retweetImageView" destination="vG0-YK-M0f" id="lUm-UO-OUy"/>
                 <outlet property="screennameLabel" destination="2ID-xU-Cen" id="Ieq-X0-nRt"/>
                 <outlet property="sinceLabel" destination="ZqR-Df-coA" id="nbz-hB-b6U"/>

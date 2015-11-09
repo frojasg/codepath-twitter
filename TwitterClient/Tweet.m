@@ -14,7 +14,11 @@
     if (self = [super init]) {
         self.tweetId = dict[@"id"];
         self.text = dict[@"text"];
+        self.likes = dict[@"favorite_count"];
+        self.retweeted = dict[@"retweet_count"];
         self.user = [[User alloc] initWithDictionary:dict[@"user"]];
+        self.didILikeIt = [dict[@"favorited"] integerValue] > 0;
+        self.didIRetweeted = [dict[@"retweeted"] integerValue] > 0;
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         formatter.dateFormat = @"EEE MMM d HH:mm:ss Z y";
         self.createdAt = [formatter dateFromString: dict[@"created_at"]];

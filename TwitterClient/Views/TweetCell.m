@@ -19,7 +19,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *tweetLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *replyImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *retweetImageView;
+@property (weak, nonatomic) IBOutlet UILabel *retweetCountLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *likeImageView;
+@property (weak, nonatomic) IBOutlet UILabel *likeCountLabel;
 @end
 
 @implementation TweetCell
@@ -57,21 +59,56 @@
     self.screennameLabel.text = tweet.user.screenname;
     self.tweetLabel.text = tweet.text;
     self.sinceLabel.text = tweet.since;
+
+    self.retweetCountLabel.text = [[NSString alloc] initWithFormat:@"%ld", [tweet.retweeted integerValue]];
+    if ([tweet.retweeted integerValue] > 0) {
+        self.retweetCountLabel.hidden = NO;
+    } else {
+        self.retweetCountLabel.hidden = YES;
+    }
+
+    self.likeCountLabel.text = [[NSString alloc] initWithFormat:@"%ld", [tweet.likes integerValue]];
+    if ([tweet.likes integerValue] > 0) {
+        self.likeCountLabel.hidden = NO;
+    } else {
+        self.likeCountLabel.hidden = YES;
+    }
+
+    if (tweet.didIRetweeted) {
+        self.retweetImageView.image = [UIImage imageNamed:@"retweeted"];
+    } else {
+        self.retweetImageView.image = [UIImage imageNamed:@"retweet"];
+    }
+
+    if (tweet.didILikeIt) {
+        self.likeImageView.image = [UIImage imageNamed:@"liked"];
+    } else {
+        self.likeImageView.image = [UIImage imageNamed:@"like"];
+    }
 }
 
 #pragma mark - Actions
 - (IBAction)onRetweet:(id)sender {
-    NSLog(@"on retweet");
+    [UIView animateWithDuration:1 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        self.retweetImageView.image = [UIImage imageNamed:@"retweeted"];
+        self.retweetCountLabel.hidden = FALSE;
+        self.retweetCountLabel.text = [[NSString alloc] initWithFormat:@"%ld", ([self.retweetCountLabel.text integerValue] + 1)];
+    } completion:nil];
+
     [self.delegator retweet:self];
 }
 
 - (IBAction)onReply:(id)sender {
-    NSLog(@"on reply");
     [self.delegator reply:self];
 }
 
 - (IBAction)onLike:(id)sender {
-    NSLog(@"on like");
+    [UIView animateWithDuration:1 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        self.likeImageView.image = [UIImage imageNamed:@"liked"];
+        self.likeCountLabel.hidden = FALSE;
+        self.likeCountLabel.text = [[NSString alloc] initWithFormat:@"%ld", ([self.likeCountLabel.text integerValue] + 1)];
+    } completion:nil];
+
     [self.delegator like:self];
 }
 

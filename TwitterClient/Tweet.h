@@ -16,6 +16,10 @@
 @property (nonatomic, strong) NSDate *createdAt;
 @property (nonatomic, strong) User *user;
 @property (nonatomic, strong) Tweet* responseTo;
+@property (nonatomic, strong) NSNumber *retweeted;
+@property (nonatomic, strong) NSNumber *likes;
+@property (nonatomic, assign) BOOL didILikeIt;
+@property (nonatomic, assign) BOOL didIRetweeted;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 

@@ -88,11 +88,11 @@
 - (IBAction)onTweet:(id)sender {
     NSLog(@"on Tweet");
     if (self.tweet) {
-        [[TwitterClient sharedInstance] tweetWithParams:@{@"status": self.inputTextField.text} completion:^(Tweet *tweet, NSError *error) {
+        [[TwitterClient sharedInstance] tweetWithParams:@{@"status": self.inputTextField.text, @"in_reply_to_status_id": self.tweet.tweetId} completion:^(Tweet *tweet, NSError *error) {
             [self onClose:self];
         }];
     } else {
-        [[TwitterClient sharedInstance] tweetWithParams:@{@"status": self.inputTextField.text, @"in_reply_to_status_id": self.tweet.tweetId} completion:^(Tweet *tweet, NSError *error) {
+        [[TwitterClient sharedInstance] tweetWithParams:@{@"status": self.inputTextField.text} completion:^(Tweet *tweet, NSError *error) {
             [self onClose:self];
         }];
     }

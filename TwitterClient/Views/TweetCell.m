@@ -22,6 +22,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *retweetCountLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *likeImageView;
 @property (weak, nonatomic) IBOutlet UILabel *likeCountLabel;
+@property (weak, nonatomic) IBOutlet UIView *retweetView;
+@property (weak, nonatomic) IBOutlet UILabel *retweetLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
 @end
 
 @implementation TweetCell
@@ -84,6 +87,15 @@
         self.likeImageView.image = [UIImage imageNamed:@"liked"];
     } else {
         self.likeImageView.image = [UIImage imageNamed:@"like"];
+    }
+
+    if (tweet.retweetedBy) {
+        self.topConstraint.constant = 30;
+        self.retweetView.hidden = NO;
+        self.retweetLabel.text = [[NSString alloc] initWithFormat:@"%@ Retweeted", tweet.retweetedBy.name];
+    } else {
+        self.topConstraint.constant = 5;
+        self.retweetView.hidden = YES;
     }
 }
 

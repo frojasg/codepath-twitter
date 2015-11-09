@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSNumber *likes;
 @property (nonatomic, assign) BOOL didILikeIt;
 @property (nonatomic, assign) BOOL didIRetweeted;
+@property (nonatomic, strong) User* retweetedBy;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 

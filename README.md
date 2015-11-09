@@ -2,7 +2,7 @@
 
 **TwitterClient** is a basic twitter app to read and compose tweets the [Twitter API](https://apps.twitter.com/).
 
-Time spent: **12.5h** hours spent in total
+Time spent: **13h** hours spent in total
 
 ## User Stories
 
@@ -22,13 +22,14 @@ The following **optional** features are implemented:
 - [ ] After creating a new tweet, a user should be able to view it in the timeline immediately without refetching the timeline from the network.
 - [x] Retweeting and favoriting should increment the retweet and favorite count.
 - [ ] User should be able to unretweet and unfavorite and should decrement the retweet and favorite count.
-- [ ] Replies should be prefixed with the username and the reply_id should be set when posting the tweet,
+- [x] Replies should be prefixed with the username and the reply_id should be set when posting the tweet,
 - [ ] User can load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client.
 
 The following **additional** features are implemented:
 
 - [ ] List anything else that you can get done to improve the app functionality!
 - [x] Use different icon for liked and retweets tweets
+- [x] When is a retweet show original tweet and who retweeted it
 
 ## Video Walkthrough
 

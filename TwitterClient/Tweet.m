@@ -12,16 +12,23 @@
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict {
     if (self = [super init]) {
-        self.tweetId = dict[@"id"];
-        self.text = dict[@"text"];
-        self.likes = dict[@"favorite_count"];
-        self.retweeted = dict[@"retweet_count"];
-        self.user = [[User alloc] initWithDictionary:dict[@"user"]];
-        self.didILikeIt = [dict[@"favorited"] integerValue] > 0;
-        self.didIRetweeted = [dict[@"retweeted"] integerValue] > 0;
+        NSDictionary* tweet;
+        if (dict[@"retweeted_status"]) {
+            tweet = dict[@"retweeted_status"];
+            self.retweetedBy = [[User alloc] initWithDictionary:dict[@"user"]];
+        } else {
+            tweet = dict;
+        }
+        self.tweetId = tweet[@"id"];
+        self.text = tweet[@"text"];
+        self.likes = tweet[@"favorite_count"];
+        self.retweeted = tweet[@"retweet_count"];
+        self.user = [[User alloc] initWithDictionary:tweet[@"user"]];
+        self.didILikeIt = [tweet[@"favorited"] integerValue] > 0;
+        self.didIRetweeted = [tweet[@"retweeted"] integerValue] > 0;
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         formatter.dateFormat = @"EEE MMM d HH:mm:ss Z y";
-        self.createdAt = [formatter dateFromString: dict[@"created_at"]];
+        self.createdAt = [formatter dateFromString: tweet[@"created_at"]];
     }
     return self;
 }

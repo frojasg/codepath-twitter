@@ -39,6 +39,11 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"TweetCell" bundle:nil] forCellReuseIdentifier:@"TweetCell"];
     self.replyTextField.text = [[NSString alloc] initWithFormat:@"%@ ", self.tweet.user.screenname];
     [self onChange:self];
+
+    UIImageView *twitter =[[UIImageView alloc] initWithFrame:CGRectMake(0,0,30,30)];
+    twitter.image=[UIImage imageNamed:@"twitter"];
+    self.navigationItem.titleView = twitter;
+
 }
 
 - (Tweet*) tweet {

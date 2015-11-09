@@ -42,8 +42,10 @@
     self.navigationItem.titleView = twitter;
 
     UIBarButtonItem *tweetButton = [[UIBarButtonItem alloc] initWithTitle:@"Tweet" style:UIBarButtonItemStylePlain target:self action:@selector(showComposer)];
-
     self.navigationItem.rightBarButtonItem = tweetButton;
+
+    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action:@selector(onLogout:)];
+    self.navigationItem.leftBarButtonItem = logoutButton;
 
     [[TwitterClient sharedInstance] homeTimelineWithParams:nil completion:^
      (NSArray *tweets, NSError *error) {

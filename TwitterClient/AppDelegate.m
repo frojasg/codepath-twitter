@@ -27,11 +27,9 @@
 
     User *user= [User currentUser];
     if (user) {
-        NSLog(@"Welcome %@", user.name);
         self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[TweetsViewController alloc] init]];
     } else {
-        NSLog(@"Not logged in");
-        self.window.rootViewController = [[LoginViewController alloc] init];
+        self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[LoginViewController alloc] init]];
 
     }
 
@@ -42,7 +40,7 @@
 }
 
 - (void)userDidLogout {
-    self.window.rootViewController = [[LoginViewController alloc] init];
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[LoginViewController alloc] init]];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

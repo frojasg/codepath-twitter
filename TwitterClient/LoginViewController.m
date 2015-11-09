@@ -18,6 +18,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIImageView *twitter =[[UIImageView alloc] initWithFrame:CGRectMake(0,0,30,30)];
+    twitter.image=[UIImage imageNamed:@"twitter"];
+    self.navigationItem.titleView = twitter;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -28,7 +31,7 @@
     [[TwitterClient sharedInstance] loginWithCompletion:^(User *user, NSError *error) {
         if (user) {
             NSLog(@"Welcome User: %@", user.name);
-            [self presentViewController:[[TweetsViewController alloc] init] animated:YES completion:nil];
+            [self presentViewController:[[UINavigationController alloc] initWithRootViewController:[[TweetsViewController alloc] init]] animated:YES completion:nil];
         } else {
             // present error view
         }

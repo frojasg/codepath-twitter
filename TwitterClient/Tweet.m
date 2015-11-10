@@ -15,6 +15,7 @@
         NSDictionary* tweet;
         if (dict[@"retweeted_status"]) {
             tweet = dict[@"retweeted_status"];
+            self.retweetedIn = dict[@"id"];
             self.retweetedBy = [[User alloc] initWithDictionary:dict[@"user"]];
         } else {
             tweet = dict;

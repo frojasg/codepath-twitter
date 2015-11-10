@@ -13,6 +13,9 @@
 - (void) retweetTweet: (Tweet *) tweet;
 - (void) likeTweet: (Tweet *) tweet;
 - (void) replyTweet: (Tweet *) tweet;
+- (void) unretweetTweet: (Tweet *) tweet;
+- (void) unlikeTweet: (Tweet *) tweet;
+
 
 @end
 

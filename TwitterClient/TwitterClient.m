@@ -94,7 +94,7 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
         Tweet *tweet = [[Tweet alloc] initWithDictionary:responseObject];
         completation(tweet, nil);
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
-        NSLog(@"Re Tweeted failed!");
+        NSLog(@"Re Tweeted failed! %@", error);
         completation(nil, error);
     }];
 }
@@ -105,6 +105,36 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
         Tweet *tweet = [[Tweet alloc] initWithDictionary:responseObject];
         completation(tweet, nil);
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        NSLog(@"liked failed!");
+        completation(nil, error);
+    }];
+}
+
+- (void) unretweetWithId: (NSString*) tweetId completion: (void (^) (Tweet *tweet, NSError * error)) completation {
+
+    [self GET:[NSString stringWithFormat:@"/1.1/statuses/show/%@.json", tweetId] parameters:@{@"include_my_retweet": @(YES)} success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        NSString *myTweetId = responseObject[@"current_user_retweet"][@"id_str"];
+        [self POST:[NSString stringWithFormat:@"/1.1/statuses/destroy/%@.json", myTweetId] parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+
+            NSLog(@"unretweet");
+            completation(nil, nil);
+        } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+            NSLog(@"unretweet failed %@", error);
+            completation(nil, error);
+        }];
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        NSLog(@"unretweet failed %@", error);
+        completation(nil, error);
+    }];
+}
+
+- (void) unlikeWithId: (NSString*) tweetId completion: (void (^) (Tweet *tweet, NSError * error)) completation {
+    [self POST:@"1.1/favorites/destroy.json" parameters:@{@"id": tweetId} success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        NSLog(@"unliked!");
+        Tweet *tweet = [[Tweet alloc] initWithDictionary:responseObject];
+        completation(tweet, nil);
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        NSLog(@"unliked failed! %@", error);
         completation(nil, error);
     }];
 }

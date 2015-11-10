@@ -14,7 +14,9 @@
 @protocol TweetCellDelegate <NSObject>
 
 - (void) retweet: (TweetCell *) cell;
+- (void) unretweet: (TweetCell *) cell;
 - (void) like: (TweetCell *) cell;
+- (void) unlike: (TweetCell *) cell;
 - (void) reply: (TweetCell *) cell;
 
 @end

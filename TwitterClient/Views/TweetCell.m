@@ -25,6 +25,8 @@
 @property (weak, nonatomic) IBOutlet UIView *retweetView;
 @property (weak, nonatomic) IBOutlet UILabel *retweetLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
+@property (assign, nonatomic) BOOL retweeted;
+@property (assign, nonatomic) BOOL liked;
 @end
 
 @implementation TweetCell
@@ -64,18 +66,12 @@
     self.sinceLabel.text = tweet.since;
 
     self.retweetCountLabel.text = [[NSString alloc] initWithFormat:@"%ld", [tweet.retweeted integerValue]];
-    if ([tweet.retweeted integerValue] > 0) {
-        self.retweetCountLabel.hidden = NO;
-    } else {
-        self.retweetCountLabel.hidden = YES;
-    }
+    self.retweeted = tweet.didIRetweeted;
 
+    self.retweetCountLabel.hidden = [tweet.retweeted integerValue] <= 0;
     self.likeCountLabel.text = [[NSString alloc] initWithFormat:@"%ld", [tweet.likes integerValue]];
-    if ([tweet.likes integerValue] > 0) {
-        self.likeCountLabel.hidden = NO;
-    } else {
-        self.likeCountLabel.hidden = YES;
-    }
+    self.liked = tweet.didILikeIt;
+    self.likeCountLabel.hidden = [tweet.likes integerValue] <= 0;
 
     if (tweet.didIRetweeted) {
         self.retweetImageView.image = [UIImage imageNamed:@"retweeted"];
@@ -101,13 +97,22 @@
 
 #pragma mark - Actions
 - (IBAction)onRetweet:(id)sender {
-    [UIView animateWithDuration:1 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-        self.retweetImageView.image = [UIImage imageNamed:@"retweeted"];
-        self.retweetCountLabel.hidden = FALSE;
-        self.retweetCountLabel.text = [[NSString alloc] initWithFormat:@"%ld", ([self.retweetCountLabel.text integerValue] + 1)];
-    } completion:nil];
-
-    [self.delegator retweet:self];
+    if (self.retweeted) {
+        [UIView animateWithDuration:1 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            self.retweetImageView.image = [UIImage imageNamed:@"retweet"];
+            self.retweetCountLabel.hidden = ([self.retweetCountLabel.text integerValue] - 1) <= 0;
+            self.retweetCountLabel.text = [[NSString alloc] initWithFormat:@"%ld", ([self.retweetCountLabel.text integerValue] - 1)];
+        } completion:nil];
+        [self.delegator unretweet:self];
+    } else {
+        [UIView animateWithDuration:1 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            self.retweetImageView.image = [UIImage imageNamed:@"retweeted"];
+            self.retweetCountLabel.hidden = FALSE;
+            self.retweetCountLabel.text = [[NSString alloc] initWithFormat:@"%ld", ([self.retweetCountLabel.text integerValue] + 1)];
+        } completion:nil];
+        [self.delegator retweet:self];
+    }
+    self.retweeted = !self.retweeted;
 }
 
 - (IBAction)onReply:(id)sender {
@@ -115,13 +120,24 @@
 }
 
 - (IBAction)onLike:(id)sender {
-    [UIView animateWithDuration:1 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-        self.likeImageView.image = [UIImage imageNamed:@"liked"];
-        self.likeCountLabel.hidden = FALSE;
-        self.likeCountLabel.text = [[NSString alloc] initWithFormat:@"%ld", ([self.likeCountLabel.text integerValue] + 1)];
-    } completion:nil];
+    if (self.liked) {
+        [UIView animateWithDuration:1 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            self.likeImageView.image = [UIImage imageNamed:@"like"];
+            self.likeCountLabel.hidden = ([self.likeCountLabel.text integerValue] - 1) <= 0;
+            self.likeCountLabel.text = [[NSString alloc] initWithFormat:@"%ld", ([self.likeCountLabel.text integerValue] - 1)];
+        } completion:nil];
 
-    [self.delegator like:self];
+        [self.delegator unlike:self];
+    } else {
+        [UIView animateWithDuration:1 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            self.likeImageView.image = [UIImage imageNamed:@"liked"];
+            self.likeCountLabel.hidden = ([self.likeCountLabel.text integerValue] + 1) <= 0;
+            self.likeCountLabel.text = [[NSString alloc] initWithFormat:@"%ld", ([self.likeCountLabel.text integerValue] + 1)];
+        } completion:nil];
+
+        [self.delegator like:self];
+    }
+    self.liked = !self.liked;
 }
 
 @end

@@ -105,6 +105,17 @@
     Tweet *tweet = self.tweets[indexPath.row];
     [self.delegator likeTweet:tweet];
 }
+- (void) unretweet: (TweetCell *) cell {
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    Tweet *tweet = self.tweets[indexPath.row];
+    [self.delegator unretweetTweet:tweet];
+}
+
+- (void) unlike: (TweetCell *) cell {
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    Tweet *tweet = self.tweets[indexPath.row];
+    [self.delegator unlikeTweet:tweet];
+}
 - (void) reply: (TweetCell *) cell {
     [self.replyTextField becomeFirstResponder];
 }

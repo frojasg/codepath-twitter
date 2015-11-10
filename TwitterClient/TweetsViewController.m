@@ -91,6 +91,16 @@
     Tweet *tweet = self.tweets[indexPath.row];
     [self likeTweet:tweet];
 }
+- (void) unretweet: (TweetCell *) cell {
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    Tweet *tweet = self.tweets[indexPath.row];
+    [self unretweetTweet:tweet];
+}
+- (void) unlike: (TweetCell *) cell {
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    Tweet *tweet = self.tweets[indexPath.row];
+    [self unlikeTweet:tweet];
+}
 
 #pragma mark Refresh Controller
 - (void) onRefresh:(UIRefreshControl *)refresh {
@@ -116,6 +126,15 @@
 }
 - (void) likeTweet: (Tweet *) tweet {
     [[TwitterClient sharedInstance] likeWithId:tweet.tweetId completion:^(Tweet *tweet, NSError *error) {
+    }];
+}
+- (void) unretweetTweet:(Tweet *)tweet {
+    [[TwitterClient sharedInstance] unretweetWithId:tweet.tweetId completion:^(Tweet *tweet, NSError *error) {
+    }];
+
+}
+- (void) unlikeTweet: (Tweet *) tweet {
+    [[TwitterClient sharedInstance] unlikeWithId:tweet.tweetId completion:^(Tweet *tweet, NSError *error) {
     }];
 }
 - (void) replyTweet: (Tweet *) tweet {

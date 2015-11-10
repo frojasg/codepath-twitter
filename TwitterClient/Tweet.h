@@ -21,6 +21,7 @@
 @property (nonatomic, assign) BOOL didILikeIt;
 @property (nonatomic, assign) BOOL didIRetweeted;
 @property (nonatomic, strong) User* retweetedBy;
+@property (nonatomic, strong) NSString* retweetedIn;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 

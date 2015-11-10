@@ -23,4 +23,6 @@
 - (void) tweetWithParams: (NSDictionary*) params completion: (void (^) (Tweet *tweet, NSError * error)) completation;
 - (void) retweetWithId: (NSString*) tweetId completion: (void (^) (Tweet *tweet, NSError * error)) completation;
 - (void) likeWithId: (NSString*) tweetId completion: (void (^) (Tweet *tweet, NSError * error)) completation;
+- (void) unretweetWithId: (NSString*) tweetId completion: (void (^) (Tweet *tweet, NSError * error)) completation;
+- (void) unlikeWithId: (NSString*) tweetId completion: (void (^) (Tweet *tweet, NSError * error)) completation;
 @end

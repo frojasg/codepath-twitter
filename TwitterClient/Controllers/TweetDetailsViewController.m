@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *replyTextField;
 @property (readonly) Tweet* tweet;
 @property (weak, nonatomic) IBOutlet UILabel *limitLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 
 @end
 
@@ -44,6 +45,11 @@
     twitter.image=[UIImage imageNamed:@"twitter"];
     self.navigationItem.titleView = twitter;
 
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidShow:)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
+
 }
 
 - (Tweet*) tweet {
@@ -53,6 +59,17 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
+-(void)keyboardDidShow:(NSNotification*)notification
+{
+    NSDictionary* keyboardInfo = [notification userInfo];
+    NSValue* keyboardFrameBegin = [keyboardInfo valueForKey:UIKeyboardFrameBeginUserInfoKey];
+    CGRect keyboardFrameBeginRect = [keyboardFrameBegin CGRectValue];
+
+    self.bottomConstraint.constant = keyboardFrameBeginRect.size.height;
+    [self.view layoutIfNeeded];
+}
+
 
 #pragma mark Actions
 - (IBAction)onReply:(id)sender {

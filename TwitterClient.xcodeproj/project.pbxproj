@@ -24,6 +24,14 @@
 		BFE2B82A1BEDB0E10087CAB3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE2B8291BEDB0E10087CAB3 /* AppDelegate.m */; };
 		BFE2B8321BEDB0E10087CAB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFE2B8311BEDB0E10087CAB3 /* Assets.xcassets */; };
 		BFE2B8351BEDB0E10087CAB3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFE2B8331BEDB0E10087CAB3 /* LaunchScreen.storyboard */; };
+		BFE462331BF6EEFD006A8A4D /* HamburgerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE462311BF6EEFD006A8A4D /* HamburgerViewController.m */; };
+		BFE462341BF6EEFD006A8A4D /* HamburgerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFE462321BF6EEFD006A8A4D /* HamburgerViewController.xib */; };
+		BFE462381BF7B48B006A8A4D /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE462361BF7B48B006A8A4D /* MenuViewController.m */; };
+		BFE462391BF7B48B006A8A4D /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFE462371BF7B48B006A8A4D /* MenuViewController.xib */; };
+		BFE4623D1BF7BA8A006A8A4D /* MenuItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE4623B1BF7BA8A006A8A4D /* MenuItemCell.m */; };
+		BFE4623E1BF7BA8A006A8A4D /* MenuItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFE4623C1BF7BA8A006A8A4D /* MenuItemCell.xib */; };
+		BFE462421BF7D8F4006A8A4D /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE462401BF7D8F4006A8A4D /* ProfileViewController.m */; };
+		BFE462431BF7D8F4006A8A4D /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFE462411BF7D8F4006A8A4D /* ProfileViewController.xib */; };
 		C797B82A31B3790D650D4F3D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03BF83951ACE69AF56BC3E3C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +67,18 @@
 		BFE2B8311BEDB0E10087CAB3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFE2B8341BEDB0E10087CAB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BFE2B8361BEDB0E10087CAB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFE462301BF6EEFD006A8A4D /* HamburgerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HamburgerViewController.h; path = Controllers/HamburgerViewController.h; sourceTree = "<group>"; };
+		BFE462311BF6EEFD006A8A4D /* HamburgerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HamburgerViewController.m; path = Controllers/HamburgerViewController.m; sourceTree = "<group>"; };
+		BFE462321BF6EEFD006A8A4D /* HamburgerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HamburgerViewController.xib; path = Controllers/HamburgerViewController.xib; sourceTree = "<group>"; };
+		BFE462351BF7B48B006A8A4D /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuViewController.h; path = Controllers/MenuViewController.h; sourceTree = "<group>"; };
+		BFE462361BF7B48B006A8A4D /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuViewController.m; path = Controllers/MenuViewController.m; sourceTree = "<group>"; };
+		BFE462371BF7B48B006A8A4D /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuViewController.xib; path = Controllers/MenuViewController.xib; sourceTree = "<group>"; };
+		BFE4623A1BF7BA8A006A8A4D /* MenuItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuItemCell.h; path = Views/MenuItemCell.h; sourceTree = "<group>"; };
+		BFE4623B1BF7BA8A006A8A4D /* MenuItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuItemCell.m; path = Views/MenuItemCell.m; sourceTree = "<group>"; };
+		BFE4623C1BF7BA8A006A8A4D /* MenuItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuItemCell.xib; path = Views/MenuItemCell.xib; sourceTree = "<group>"; };
+		BFE4623F1BF7D8F4006A8A4D /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileViewController.h; path = Controllers/ProfileViewController.h; sourceTree = "<group>"; };
+		BFE462401BF7D8F4006A8A4D /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileViewController.m; path = Controllers/ProfileViewController.m; sourceTree = "<group>"; };
+		BFE462411BF7D8F4006A8A4D /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfileViewController.xib; path = Controllers/ProfileViewController.xib; sourceTree = "<group>"; };
 		E52342B9BE912513921E9213 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,6 +118,15 @@
 				BF39C2901BF00D8000F8A2BD /* TweetDetailsViewController.h */,
 				BF39C2911BF00D8000F8A2BD /* TweetDetailsViewController.m */,
 				BF39C2921BF00D8000F8A2BD /* TweetDetailsViewController.xib */,
+				BFE462301BF6EEFD006A8A4D /* HamburgerViewController.h */,
+				BFE462311BF6EEFD006A8A4D /* HamburgerViewController.m */,
+				BFE462321BF6EEFD006A8A4D /* HamburgerViewController.xib */,
+				BFE462351BF7B48B006A8A4D /* MenuViewController.h */,
+				BFE462361BF7B48B006A8A4D /* MenuViewController.m */,
+				BFE462371BF7B48B006A8A4D /* MenuViewController.xib */,
+				BFE4623F1BF7D8F4006A8A4D /* ProfileViewController.h */,
+				BFE462401BF7D8F4006A8A4D /* ProfileViewController.m */,
+				BFE462411BF7D8F4006A8A4D /* ProfileViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -129,6 +158,9 @@
 				BF8940821BEE78D6009D42FA /* TweetCell.h */,
 				BF8940831BEE78D6009D42FA /* TweetCell.m */,
 				BF8940841BEE78D6009D42FA /* TweetCell.xib */,
+				BFE4623A1BF7BA8A006A8A4D /* MenuItemCell.h */,
+				BFE4623B1BF7BA8A006A8A4D /* MenuItemCell.m */,
+				BFE4623C1BF7BA8A006A8A4D /* MenuItemCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -245,12 +277,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFE462341BF6EEFD006A8A4D /* HamburgerViewController.xib in Resources */,
 				BF8940801BEDE53D009D42FA /* TweetsViewController.xib in Resources */,
 				BF39C28F1BEF03DE00F8A2BD /* ComposerController.xib in Resources */,
 				BF39C2941BF00D8000F8A2BD /* TweetDetailsViewController.xib in Resources */,
+				BFE462391BF7B48B006A8A4D /* MenuViewController.xib in Resources */,
+				BFE462431BF7D8F4006A8A4D /* ProfileViewController.xib in Resources */,
 				BF8940861BEE78D6009D42FA /* TweetCell.xib in Resources */,
 				BFE2B8351BEDB0E10087CAB3 /* LaunchScreen.storyboard in Resources */,
 				BFE2B8321BEDB0E10087CAB3 /* Assets.xcassets in Resources */,
+				BFE4623E1BF7BA8A006A8A4D /* MenuItemCell.xib in Resources */,
 				BF89406F1BEDB7CE009D42FA /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,12 +350,16 @@
 				BFE2B82A1BEDB0E10087CAB3 /* AppDelegate.m in Sources */,
 				BF89407B1BEDC837009D42FA /* User.m in Sources */,
 				BF39C2931BF00D8000F8A2BD /* TweetDetailsViewController.m in Sources */,
+				BFE462421BF7D8F4006A8A4D /* ProfileViewController.m in Sources */,
 				BF8940781BEDC823009D42FA /* Tweet.m in Sources */,
 				BFE2B8271BEDB0E10087CAB3 /* main.m in Sources */,
 				BF89406E1BEDB7CE009D42FA /* LoginViewController.m in Sources */,
+				BFE462381BF7B48B006A8A4D /* MenuViewController.m in Sources */,
 				BF39C28E1BEF03DE00F8A2BD /* ComposerController.m in Sources */,
 				BF89407F1BEDE53D009D42FA /* TweetsViewController.m in Sources */,
 				BF8940851BEE78D6009D42FA /* TweetCell.m in Sources */,
+				BFE4623D1BF7BA8A006A8A4D /* MenuItemCell.m in Sources */,
+				BFE462331BF6EEFD006A8A4D /* HamburgerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

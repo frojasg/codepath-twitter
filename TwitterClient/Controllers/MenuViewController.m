@@ -56,8 +56,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
-
     MenuItemCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"MenuItemCell"];
 
     cell.textLabel.text = self.menuItems[indexPath.row];

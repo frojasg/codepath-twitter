@@ -167,7 +167,8 @@
 - (void) onRefresh:(UIRefreshControl *)refresh {
     if (self.tweets.count > 0) {
         Tweet *lasTweet = self.tweets[0];
-        [[TwitterClient sharedInstance] homeTimelineWithParams:@{@"since_id": lasTweet.tweetId } completion:^
+
+        [[TwitterClient sharedInstance] userTimelineWithParams:@{@"screen_name": self.user.screenname, @"since_id": lasTweet.tweetId } completion:^
          (NSArray *tweets, NSError *error) {
              self.tweets = [tweets arrayByAddingObjectsFromArray:self.tweets];
 

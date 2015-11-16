@@ -65,7 +65,10 @@
     if (sender.state == UIGestureRecognizerStateBegan) {
         self.originalLeftMargin = self.leftMarginConstraint.constant;
     } else if (sender.state == UIGestureRecognizerStateChanged) {
-        self.leftMarginConstraint.constant = self.originalLeftMargin + translation.x;
+        if (self.originalLeftMargin + translation.x >= 0 && self.originalLeftMargin + translation.x <= self.view.frame.size.width) {
+            self.leftMarginConstraint.constant = self.originalLeftMargin + translation.x;
+        }
+
     } else if (sender.state == UIGestureRecognizerStateEnded) {
         [UIView animateWithDuration:0.3 animations:^{
             if (velocity.x > 0) {

@@ -52,15 +52,25 @@
 
     self.navigationItem.leftBarButtonItem = menuButton;
 
-    [[TwitterClient sharedInstance] homeTimelineWithParams:nil completion:^
-     (NSArray *tweets, NSError *error) {
-         self.tweets = tweets;
-         for (Tweet *tweet in tweets) {
-             NSLog(@"image: %@ text: %@ ", [tweet.user.profileImageUrl absoluteString], tweet.text);
-
-         }
-         [self.tableView reloadData];
-     }];
+    if (self.showMentions) {
+        [[TwitterClient sharedInstance] userMentionsWithParams:nil completion:^
+         (NSArray *tweets, NSError *error) {
+             self.tweets = tweets;
+             for (Tweet *tweet in tweets) {
+                 NSLog(@"image: %@ text: %@ ", [tweet.user.profileImageUrl absoluteString], tweet.text);
+             }
+             [self.tableView reloadData];
+         }];
+    } else {
+        [[TwitterClient sharedInstance] homeTimelineWithParams:nil completion:^
+         (NSArray *tweets, NSError *error) {
+             self.tweets = tweets;
+             for (Tweet *tweet in tweets) {
+                 NSLog(@"image: %@ text: %@ ", [tweet.user.profileImageUrl absoluteString], tweet.text);
+             }
+             [self.tableView reloadData];
+         }];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -117,8 +127,22 @@
 - (void) onRefresh:(UIRefreshControl *)refresh {
     if (self.tweets.count > 0) {
         Tweet *lasTweet = self.tweets[0];
-    [[TwitterClient sharedInstance] homeTimelineWithParams:@{@"since_id": lasTweet.tweetId } completion:^
-     (NSArray *tweets, NSError *error) {
+
+        if(self.showMentions) {
+            [[TwitterClient sharedInstance] userMentionsWithParams:@{@"since_id": lasTweet.tweetId } completion:^
+             (NSArray *tweets, NSError *error) {
+                 self.tweets = [tweets arrayByAddingObjectsFromArray:self.tweets];
+
+                 for (Tweet *tweet in tweets) {
+                     NSLog(@"image: %@ text: %@ ", [tweet.user.profileImageUrl absoluteString], tweet.text);
+                 }
+                 [self.tableView reloadData];
+                 [self.refreshControl endRefreshing];
+             }];
+        } else {
+
+        [[TwitterClient sharedInstance] homeTimelineWithParams:@{@"since_id": lasTweet.tweetId } completion:^
+         (NSArray *tweets, NSError *error) {
          self.tweets = [tweets arrayByAddingObjectsFromArray:self.tweets];
 
          for (Tweet *tweet in tweets) {
@@ -127,6 +151,7 @@
          [self.tableView reloadData];
          [self.refreshControl endRefreshing];
      }];
+        }
     }
 }
 

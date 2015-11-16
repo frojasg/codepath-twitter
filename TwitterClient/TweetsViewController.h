@@ -10,4 +10,6 @@
 
 @interface TweetsViewController : UIViewController
 
+@property(assign, nonatomic) BOOL showMentions;
+
 @end

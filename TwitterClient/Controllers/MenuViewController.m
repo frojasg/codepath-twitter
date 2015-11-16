@@ -16,7 +16,6 @@
 @property (strong, nonatomic) NSArray *viewControllers;
 @property (strong, nonatomic) UIViewController *timeline;
 @property (strong, nonatomic) UIViewController *profile;
-@property (strong, nonatomic) TweetsViewController *tweetsViewController;
 @property (strong, nonatomic) UIViewController *mentions;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @end
@@ -26,8 +25,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.tweetsViewController = [[TweetsViewController alloc] init];
-    self.timeline = [[UINavigationController alloc] initWithRootViewController: self.tweetsViewController];
+    self.timeline = [[UINavigationController alloc] initWithRootViewController: [[TweetsViewController alloc] init]];
+
+    TweetsViewController *mentions = [[TweetsViewController alloc] init];
+    mentions.showMentions = YES;
+    self.mentions =[[UINavigationController alloc] initWithRootViewController: mentions];
+
     ProfileViewController *profileView = [[ProfileViewController alloc] init];
 
     [profileView setUser:[User currentUser]];
@@ -61,7 +64,7 @@
     self.hamburgerViewController.contentViewController = self.profile;
 }
 - (IBAction)onMentions:(id)sender {
-
+    self.hamburgerViewController.contentViewController = self.mentions;
 }
 - (IBAction)onLogout:(id)sender {
     [User logout];

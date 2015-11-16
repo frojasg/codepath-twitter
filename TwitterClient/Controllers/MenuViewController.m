@@ -6,61 +6,65 @@
 //  Copyright © 2015 Francisco Rojas. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "MenuViewController.h"
-#import "MenuItemCell.h"
 #import "TweetsViewController.h"
+#import "ProfileViewController.h"
+#import "UIImageView+AFNetworking.h"
 
-@interface MenuViewController () <UITableViewDataSource, UITableViewDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray *menuItems;
+@interface MenuViewController ()
 @property (strong, nonatomic) NSArray *viewControllers;
+@property (strong, nonatomic) UIViewController *timeline;
+@property (strong, nonatomic) UIViewController *profile;
+@property (strong, nonatomic) TweetsViewController *tweetsViewController;
+@property (strong, nonatomic) UIViewController *mentions;
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @end
 
 @implementation MenuViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.menuItems = @[@"Home", @"Profile"];
 
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 100;
-    [self.tableView registerNib:[UINib nibWithNibName:@"MenuItemCell" bundle:nil] forCellReuseIdentifier:@"MenuItemCell"];
+    self.tweetsViewController = [[TweetsViewController alloc] init];
+    self.timeline = [[UINavigationController alloc] initWithRootViewController: self.tweetsViewController];
+    ProfileViewController *profileView = [[ProfileViewController alloc] init];
 
-    self.viewControllers = @[[[UINavigationController alloc] initWithRootViewController:[[TweetsViewController alloc] init]], [[UINavigationController alloc] initWithRootViewController:[[TweetsViewController alloc] init]]];
+    [profileView setUser:[User currentUser]];
+    profileView.showMenuItem = YES;
+    self.profile = [[UINavigationController alloc] initWithRootViewController:profileView];
+
+    [self.profileImageView setImageWithURL:[User currentUser].profileImageUrl];
+    self.profileImageView.layer.cornerRadius = 5;
+    self.profileImageView.clipsToBounds = YES;
+    UITapGestureRecognizer *homeTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onHome:)];
+    homeTap.numberOfTapsRequired = 1;
+    [self.profileImageView setUserInteractionEnabled:YES];
+    [self.profileImageView addGestureRecognizer:homeTap];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    self.hamburgerViewController.contentViewController = self.viewControllers[0];
+    self.hamburgerViewController.contentViewController = self.timeline;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
-#pragma mark Table View Selector
+#pragma mark Actions
 
-- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-
-    self.hamburgerViewController.contentViewController = self.viewControllers[indexPath.row];
-
+- (IBAction)onHome:(id)sender {
+    self.hamburgerViewController.contentViewController = self.timeline;
 }
 
-
-#pragma mark TableView DataSource methods
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.menuItems.count;
+- (IBAction)onProfile:(id)sender {
+    self.hamburgerViewController.contentViewController = self.profile;
 }
+- (IBAction)onMentions:(id)sender {
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    MenuItemCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"MenuItemCell"];
-
-    cell.textLabel.text = self.menuItems[indexPath.row];
-
-    return cell;
+}
+- (IBAction)onLogout:(id)sender {
+    [User logout];
 }
 
 

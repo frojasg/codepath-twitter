@@ -13,4 +13,6 @@
 @property (strong, nonatomic) UIViewController *menuViewController;
 @property (strong, nonatomic) UIViewController *contentViewController;
 
+- (void) showMenu;
+
 @end

@@ -12,5 +12,7 @@
 @interface ProfileViewController : UIViewController
 
 @property (weak, nonatomic) User *user;
+@property (assign, nonatomic) BOOL showMenuItem;
+
 
 @end

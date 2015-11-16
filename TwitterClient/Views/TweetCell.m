@@ -27,7 +27,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
 @property (assign, nonatomic) BOOL retweeted;
 @property (assign, nonatomic) BOOL liked;
-//@property (weak, nonatomic) User* user;
+
 @end
 
 @implementation TweetCell

@@ -6,6 +6,7 @@
 //  Copyright © 2015 Francisco Rojas. All rights reserved.
 //
 
+
 #import "TweetsViewController.h"
 #import "ComposerController.h"
 #import "TweetDetailsViewController.h"
@@ -46,8 +47,10 @@
     UIBarButtonItem *tweetButton = [[UIBarButtonItem alloc] initWithTitle:@"Tweet" style:UIBarButtonItemStylePlain target:self action:@selector(showComposer)];
     self.navigationItem.rightBarButtonItem = tweetButton;
 
-    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action:@selector(onLogout:)];
-    self.navigationItem.leftBarButtonItem = logoutButton;
+//    UIBarButtonItem *menuButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonItemStylePlain target:self action:@selector(onMenu:)];
+    UIBarButtonItem *menuButton = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStylePlain target:self action:@selector(onMenu:)];
+
+    self.navigationItem.leftBarButtonItem = menuButton;
 
     [[TwitterClient sharedInstance] homeTimelineWithParams:nil completion:^
      (NSArray *tweets, NSError *error) {
@@ -63,10 +66,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
-- (IBAction)onLogout:(id)sender {
-    [User logout];
-}
 #pragma mark Actions
+
+- (IBAction)onMenu:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ShowMenunNotification" object:nil];
+}
 
 - (void) showComposer {
     NSLog(@"Tweet");

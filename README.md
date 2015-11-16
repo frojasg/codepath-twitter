@@ -2,7 +2,7 @@
 
 **TwitterClient** is a basic twitter app to read and compose tweets the [Twitter API](https://apps.twitter.com/).
 
-Time spent: **5** hours spent in total
+Time spent: **8** hours spent in total
 
 ## User Stories
 
@@ -11,7 +11,7 @@ The following **required** functionality is completed:
 - [ ] Hamburger menu
    - [x] Dragging anywhere in the view should reveal the menu.
    - [ ] The menu should include links to your profile, the home timeline, and the mentions view.
-   - [ ] The menu can look similar to the LinkedIn menu below or feel free to take liberty with the UI.
+   - [x] The menu can look similar to the LinkedIn menu below or feel free to take liberty with the UI.
 - [x] Profile page
    - [x] Contains the user header view
    - [x] Contains a section with the users basic stats: # tweets, # following, # followers

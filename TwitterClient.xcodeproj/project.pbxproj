@@ -28,8 +28,6 @@
 		BFE462341BF6EEFD006A8A4D /* HamburgerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFE462321BF6EEFD006A8A4D /* HamburgerViewController.xib */; };
 		BFE462381BF7B48B006A8A4D /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE462361BF7B48B006A8A4D /* MenuViewController.m */; };
 		BFE462391BF7B48B006A8A4D /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFE462371BF7B48B006A8A4D /* MenuViewController.xib */; };
-		BFE4623D1BF7BA8A006A8A4D /* MenuItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE4623B1BF7BA8A006A8A4D /* MenuItemCell.m */; };
-		BFE4623E1BF7BA8A006A8A4D /* MenuItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFE4623C1BF7BA8A006A8A4D /* MenuItemCell.xib */; };
 		BFE462421BF7D8F4006A8A4D /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE462401BF7D8F4006A8A4D /* ProfileViewController.m */; };
 		BFE462431BF7D8F4006A8A4D /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFE462411BF7D8F4006A8A4D /* ProfileViewController.xib */; };
 		C797B82A31B3790D650D4F3D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03BF83951ACE69AF56BC3E3C /* libPods.a */; };
@@ -73,9 +71,6 @@
 		BFE462351BF7B48B006A8A4D /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuViewController.h; path = Controllers/MenuViewController.h; sourceTree = "<group>"; };
 		BFE462361BF7B48B006A8A4D /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuViewController.m; path = Controllers/MenuViewController.m; sourceTree = "<group>"; };
 		BFE462371BF7B48B006A8A4D /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuViewController.xib; path = Controllers/MenuViewController.xib; sourceTree = "<group>"; };
-		BFE4623A1BF7BA8A006A8A4D /* MenuItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuItemCell.h; path = Views/MenuItemCell.h; sourceTree = "<group>"; };
-		BFE4623B1BF7BA8A006A8A4D /* MenuItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuItemCell.m; path = Views/MenuItemCell.m; sourceTree = "<group>"; };
-		BFE4623C1BF7BA8A006A8A4D /* MenuItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuItemCell.xib; path = Views/MenuItemCell.xib; sourceTree = "<group>"; };
 		BFE4623F1BF7D8F4006A8A4D /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileViewController.h; path = Controllers/ProfileViewController.h; sourceTree = "<group>"; };
 		BFE462401BF7D8F4006A8A4D /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileViewController.m; path = Controllers/ProfileViewController.m; sourceTree = "<group>"; };
 		BFE462411BF7D8F4006A8A4D /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfileViewController.xib; path = Controllers/ProfileViewController.xib; sourceTree = "<group>"; };
@@ -158,9 +153,6 @@
 				BF8940821BEE78D6009D42FA /* TweetCell.h */,
 				BF8940831BEE78D6009D42FA /* TweetCell.m */,
 				BF8940841BEE78D6009D42FA /* TweetCell.xib */,
-				BFE4623A1BF7BA8A006A8A4D /* MenuItemCell.h */,
-				BFE4623B1BF7BA8A006A8A4D /* MenuItemCell.m */,
-				BFE4623C1BF7BA8A006A8A4D /* MenuItemCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -286,7 +278,6 @@
 				BF8940861BEE78D6009D42FA /* TweetCell.xib in Resources */,
 				BFE2B8351BEDB0E10087CAB3 /* LaunchScreen.storyboard in Resources */,
 				BFE2B8321BEDB0E10087CAB3 /* Assets.xcassets in Resources */,
-				BFE4623E1BF7BA8A006A8A4D /* MenuItemCell.xib in Resources */,
 				BF89406F1BEDB7CE009D42FA /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,7 +349,6 @@
 				BF39C28E1BEF03DE00F8A2BD /* ComposerController.m in Sources */,
 				BF89407F1BEDE53D009D42FA /* TweetsViewController.m in Sources */,
 				BF8940851BEE78D6009D42FA /* TweetCell.m in Sources */,
-				BFE4623D1BF7BA8A006A8A4D /* MenuItemCell.m in Sources */,
 				BFE462331BF6EEFD006A8A4D /* HamburgerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

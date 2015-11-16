@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuViewController">
             <connections>
-                <outlet property="tableView" destination="imf-JC-tXs" id="fZX-TB-hwE"/>
+                <outlet property="profileImageView" destination="mTg-2d-70R" id="59Z-c5-4AX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,19 +16,98 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="imf-JC-tXs">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </tableView>
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="L4W-Qm-70E">
+                    <rect key="frame" x="10" y="88" width="48" height="48"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="48" id="jAR-0T-xmY"/>
+                        <constraint firstAttribute="height" constant="48" id="oZv-hO-mKK"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="vGw-Ja-B5r" appends="YES" id="XIY-mg-Ap0"/>
+                    </connections>
+                </imageView>
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="Uuo-uw-lnd">
+                    <rect key="frame" x="10" y="146" width="48" height="48"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="48" id="7a0-5U-7Yh"/>
+                        <constraint firstAttribute="height" constant="48" id="W5y-q4-fba"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="GBJ-hf-ZUH" appends="YES" id="5yN-xF-Kkc"/>
+                    </connections>
+                </imageView>
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mentions" translatesAutoresizingMaskIntoConstraints="NO" id="2hu-3Y-Wca">
+                    <rect key="frame" x="10" y="204" width="48" height="48"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="48" id="YGn-gV-RzP"/>
+                        <constraint firstAttribute="height" constant="48" id="kAg-NX-LGZ"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="mJM-f7-Fqo" appends="YES" id="UXU-nK-2M5"/>
+                    </connections>
+                </imageView>
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="close" translatesAutoresizingMaskIntoConstraints="NO" id="oea-Ua-qzL">
+                    <rect key="frame" x="8" y="262" width="48" height="48"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="48" id="N3c-ca-tCg"/>
+                        <constraint firstAttribute="height" constant="48" id="ef5-KX-O58"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="wdE-NX-JvV" appends="YES" id="BgZ-hX-XB3"/>
+                    </connections>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mTg-2d-70R">
+                    <rect key="frame" x="8" y="30" width="48" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="Rcw-Ra-PIt"/>
+                        <constraint firstAttribute="width" constant="48" id="wVX-F9-7Iz"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="imf-JC-tXs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="1PM-5b-Wro"/>
-                <constraint firstAttribute="bottom" secondItem="imf-JC-tXs" secondAttribute="bottom" id="99K-EJ-HeZ"/>
-                <constraint firstAttribute="trailing" secondItem="imf-JC-tXs" secondAttribute="trailing" id="sCf-f5-G7e"/>
-                <constraint firstItem="imf-JC-tXs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="tBF-IH-vXi"/>
+                <constraint firstItem="L4W-Qm-70E" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="144-Ob-c8N"/>
+                <constraint firstItem="oea-Ua-qzL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="6oc-LB-tfg"/>
+                <constraint firstItem="L4W-Qm-70E" firstAttribute="top" secondItem="mTg-2d-70R" secondAttribute="bottom" constant="10" id="9Jf-Mp-MNW"/>
+                <constraint firstItem="mTg-2d-70R" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="PUG-Bs-ixW"/>
+                <constraint firstItem="oea-Ua-qzL" firstAttribute="top" secondItem="2hu-3Y-Wca" secondAttribute="bottom" constant="10" id="SK8-fc-tW4"/>
+                <constraint firstItem="mTg-2d-70R" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="jkQ-sF-v6y"/>
+                <constraint firstItem="2hu-3Y-Wca" firstAttribute="top" secondItem="Uuo-uw-lnd" secondAttribute="bottom" constant="10" id="kEu-gh-5md"/>
+                <constraint firstItem="Uuo-uw-lnd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="mlr-Gv-0Fb"/>
+                <constraint firstItem="Uuo-uw-lnd" firstAttribute="top" secondItem="L4W-Qm-70E" secondAttribute="bottom" constant="10" id="nBj-q6-7S3"/>
+                <constraint firstItem="2hu-3Y-Wca" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="rKc-3p-9o5"/>
             </constraints>
             <point key="canvasLocation" x="358" y="392"/>
         </view>
+        <tapGestureRecognizer id="vGw-Ja-B5r">
+            <connections>
+                <action selector="onHome:" destination="-1" id="Lqp-xN-Lqc"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="GBJ-hf-ZUH">
+            <connections>
+                <action selector="onProfile:" destination="-1" id="oW5-gv-cEC"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="mJM-f7-Fqo">
+            <connections>
+                <action selector="onMentions:" destination="-1" id="6yO-vm-stp"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="wdE-NX-JvV">
+            <connections>
+                <action selector="onLogout:" destination="-1" id="9if-oj-49q"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
+    <resources>
+        <image name="close" width="32" height="32"/>
+        <image name="home" width="48" height="48"/>
+        <image name="mentions" width="48" height="48"/>
+        <image name="profile" width="48" height="48"/>
+    </resources>
 </document>

@@ -8,11 +8,13 @@
 
 #import "ProfileViewController.h"
 #import "ComposerController.h"
+#import "TweetDetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "TwitterClient.h"
 #import "TweetCell.h"
+#import "TweetDelegate.h"
 
-@interface ProfileViewController () <UITableViewDataSource, UITableViewDelegate,  TweetCellDelegate>
+@interface ProfileViewController () <UITableViewDataSource, UITableViewDelegate,  TweetCellDelegate, TweetDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *coverImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -61,6 +63,12 @@
     UIBarButtonItem *tweetButton = [[UIBarButtonItem alloc] initWithTitle:@"Tweet" style:UIBarButtonItemStylePlain target:self action:@selector(showComposer)];
     self.navigationItem.rightBarButtonItem = tweetButton;
 
+    if (self.showMenuItem) {
+        UIBarButtonItem *menuButton = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStylePlain target:self action:@selector(onMenu:)];
+
+        self.navigationItem.leftBarButtonItem = menuButton;
+
+    }
 
     [self fetchUserTimeLine];
 
@@ -131,7 +139,6 @@
     }
 }
 
-
 #pragma mark TweetDelegate
 - (void) retweetTweet:(Tweet *)tweet {
     [[TwitterClient sharedInstance] retweetWithId:tweet.tweetId completion:^(Tweet *tweet, NSError *error) {
@@ -162,6 +169,19 @@
     [self.navigationController pushViewController:profile  animated:YES];
 }
 
+#pragma mark TableView
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    Tweet *tweet = self.tweets[indexPath.row];
+
+    TweetDetailsViewController *vc = [[TweetDetailsViewController alloc] initWithTweet:tweet];
+    vc.delegator = self;
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
+
+
 
 #pragma mark Refresh Controller
 - (void) onRefresh:(UIRefreshControl *)refresh {
@@ -181,11 +201,18 @@
     }
 }
 
-#pragma mark Actions
+-(void) setMenuItem {
 
+}
+
+#pragma mark Actions
 - (void) showComposer {
     NSLog(@"Tweet");
     [self presentViewController:[[ComposerController alloc] init] animated:YES completion:nil];
+}
+
+- (IBAction)onMenu:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ShowMenunNotification" object:nil];
 }
 
 

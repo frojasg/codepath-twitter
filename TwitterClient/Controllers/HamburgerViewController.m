@@ -8,6 +8,8 @@
 
 #import "HamburgerViewController.h"
 
+NSString * const ShowMenunNotification = @"ShowMenunNotification";
+
 @interface HamburgerViewController ()
 @property (weak, nonatomic) IBOutlet UIView *menuView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
@@ -20,6 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showMenu) name:ShowMenunNotification object:nil];
+
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -58,6 +62,13 @@
 
 #pragma mark Actions
 
+- (void) showMenu {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.leftMarginConstraint.constant = 68;
+        [self.view layoutIfNeeded];
+    }];
+}
+
 - (IBAction)onPanGesture:(UIPanGestureRecognizer *)sender {
     CGPoint translation = [sender translationInView:self.view];
     CGPoint velocity = [sender velocityInView:self.view];
@@ -72,7 +83,7 @@
     } else if (sender.state == UIGestureRecognizerStateEnded) {
         [UIView animateWithDuration:0.3 animations:^{
             if (velocity.x > 0) {
-                self.leftMarginConstraint.constant = self.view.frame.size.width - 100;
+                self.leftMarginConstraint.constant = 68;
             } else {
                 self.leftMarginConstraint.constant = 0;
             }

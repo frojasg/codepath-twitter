@@ -7,6 +7,7 @@
 //
 
 #import "TweetDetailsViewController.h"
+#import "ProfileViewController.h"
 #import "TweetCell.h"
 #import "TwitterClient.h"
 #import "User.h"
@@ -33,6 +34,9 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
@@ -137,5 +141,12 @@
     [self.replyTextField becomeFirstResponder];
 }
 
+- (void) profileSelection:(TweetCell *)cell {
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    Tweet *tweet = self.tweets[indexPath.row];
+    ProfileViewController *profile = [[ProfileViewController alloc] init];
+    [profile setUser:tweet.user];
+    [self.navigationController pushViewController:profile  animated:YES];
+}
 
 @end

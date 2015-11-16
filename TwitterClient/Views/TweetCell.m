@@ -27,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
 @property (assign, nonatomic) BOOL retweeted;
 @property (assign, nonatomic) BOOL liked;
+//@property (weak, nonatomic) User* user;
 @end
 
 @implementation TweetCell
@@ -49,6 +50,12 @@
 
     [self.likeImageView setUserInteractionEnabled:YES];
     [self.likeImageView addGestureRecognizer:likeTap];
+
+    UITapGestureRecognizer *profileTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onProfileSelection:)];
+    profileTap.numberOfTapsRequired = 1;
+
+    [self.tweetImageView setUserInteractionEnabled:YES];
+    [self.tweetImageView addGestureRecognizer:profileTap];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -96,6 +103,11 @@
 }
 
 #pragma mark - Actions
+- (IBAction)onProfileSelection:(id)sender {
+    [self.delegator profileSelection: self];
+}
+
+
 - (IBAction)onRetweet:(id)sender {
     if (self.retweeted) {
         [UIView animateWithDuration:1 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{

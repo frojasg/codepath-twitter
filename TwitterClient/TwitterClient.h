@@ -20,6 +20,7 @@
 - (void) openURL: (NSURL *) url;
 
 - (void) homeTimelineWithParams:(NSDictionary*) params completion:(void (^)(NSArray *tweets, NSError *error)) completation;
+- (void) userTimelineWithParams:(NSDictionary*) params completion:(void (^)(NSArray *tweets, NSError *error)) completation;
 - (void) tweetWithParams: (NSDictionary*) params completion: (void (^) (Tweet *tweet, NSError * error)) completation;
 - (void) retweetWithId: (NSString*) tweetId completion: (void (^) (Tweet *tweet, NSError * error)) completation;
 - (void) likeWithId: (NSString*) tweetId completion: (void (^) (Tweet *tweet, NSError * error)) completation;

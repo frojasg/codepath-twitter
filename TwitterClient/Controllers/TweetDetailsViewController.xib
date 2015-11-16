@@ -23,7 +23,7 @@
                     <rect key="frame" x="0.0" y="260" width="320" height="50"/>
                     <subviews>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ThB-8b-p5K">
-                            <rect key="frame" x="10" y="11" width="228" height="30"/>
+                            <rect key="frame" x="10" y="11" width="228.5" height="30"/>
                             <color key="backgroundColor" red="0.88235294117647056" green="0.90980392156862744" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
@@ -46,7 +46,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="140" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uWY-tR-ELQ">
-                            <rect key="frame" x="243" y="18" width="23" height="16"/>
+                            <rect key="frame" x="243.5" y="18" width="22.5" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" red="0.40000000000000002" green="0.45882352939999999" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -69,7 +69,7 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="140" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Z3O-ji-q6q">
-                    <rect key="frame" x="0.0" y="70" width="320" height="190"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="260"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
             </subviews>
@@ -80,7 +80,7 @@
                 <constraint firstAttribute="trailing" secondItem="CQC-Yn-lsC" secondAttribute="trailing" id="Rdc-PW-pcx"/>
                 <constraint firstItem="CQC-Yn-lsC" firstAttribute="top" secondItem="Z3O-ji-q6q" secondAttribute="bottom" id="nYS-EW-8kR"/>
                 <constraint firstItem="CQC-Yn-lsC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="pL6-ll-mZ3"/>
-                <constraint firstItem="Z3O-ji-q6q" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="q9g-8J-Azl"/>
+                <constraint firstItem="Z3O-ji-q6q" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="q9g-8J-Azl"/>
                 <constraint firstAttribute="bottom" secondItem="CQC-Yn-lsC" secondAttribute="bottom" constant="258" id="tVE-DP-iOe"/>
             </constraints>
             <point key="canvasLocation" x="340" y="223"/>

@@ -24,8 +24,17 @@ NSString * const UserDidLogoutNotification = @"UserDidLogoutNotification";
     if (self = [super init]) {
         self.name = dict[@"name"];
         self.screenname = dict[@"screen_name"];
+
+        if (dict[@"profile_banner_url"]) {
+            self.coverImageUrl = [NSURL URLWithString:dict[@"profile_banner_url"]];
+        } else {
+            self.coverImageUrl = [NSURL URLWithString:dict[@"profile_background_image_url"]];
+        }
         self.profileImageUrl = [NSURL URLWithString: dict[@"profile_image_url"]];
         self.tagline = dict[@"description"];
+        self.tweetCount = dict[@"statuses_count"];
+        self.followersCount = dict[@"followers_count"];
+        self.followingCount = dict[@"friends_count"];
         self.dictionary = dict;
     }
     return self;

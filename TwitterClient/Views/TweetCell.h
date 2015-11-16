@@ -18,6 +18,8 @@
 - (void) like: (TweetCell *) cell;
 - (void) unlike: (TweetCell *) cell;
 - (void) reply: (TweetCell *) cell;
+- (void) profileSelection: (TweetCell *) cell;
+
 
 @end
 

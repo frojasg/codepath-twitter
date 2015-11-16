@@ -16,6 +16,5 @@
 - (void) unretweetTweet: (Tweet *) tweet;
 - (void) unlikeTweet: (Tweet *) tweet;
 
-
 @end
 

@@ -6,6 +6,7 @@
 //  Copyright © 2015 Francisco Rojas. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "ProfileViewController.h"
 #import "ComposerController.h"
 #import "TweetDetailsViewController.h"
@@ -71,6 +72,11 @@
     }
 
     [self fetchUserTimeLine];
+
+    [self.profileImageView.layer setBorderColor: [[UIColor whiteColor] CGColor]];
+    [self.profileImageView.layer setBorderWidth: 3.0];
+    self.profileImageView.layer.cornerRadius = 5;
+    self.profileImageView.clipsToBounds = YES;
 
 }
 

@@ -8,6 +8,8 @@
 
 #import "LoginViewController.h"
 #import "TweetsViewController.h"
+#import "HamburgerViewController.h"
+#import "MenuViewController.h"
 #import "TwitterClient.h"
 
 @interface LoginViewController ()
@@ -31,7 +33,12 @@
     [[TwitterClient sharedInstance] loginWithCompletion:^(User *user, NSError *error) {
         if (user) {
             NSLog(@"Welcome User: %@", user.name);
-            [self presentViewController:[[UINavigationController alloc] initWithRootViewController:[[TweetsViewController alloc] init]] animated:YES completion:nil];
+            HamburgerViewController *hamburgerViewController = [[HamburgerViewController alloc] init];
+            MenuViewController *menuViewController = [[MenuViewController alloc] init];
+            menuViewController.hamburgerViewController = hamburgerViewController;
+            hamburgerViewController.menuViewController = menuViewController;
+
+            [self presentViewController:hamburgerViewController animated:YES completion:nil];
         } else {
             // present error view
         }
